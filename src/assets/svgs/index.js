@@ -1,0 +1,5 @@
+export { ReactComponent as Play } from './play.svg'
+export { ReactComponent as Love } from './love.svg'
+export { ReactComponent as Emotion } from './emotion.svg'
+export { ReactComponent as Search } from './search.svg'
+export { ReactComponent as Music } from './music.svg'

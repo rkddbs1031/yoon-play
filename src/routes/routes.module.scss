@@ -1,1 +1,18 @@
-/* stylelint-disable-next-line no-empty-source */
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/mixins/responsive';
+
+body {
+  background: colors.$BG_COLOR;
+}
+
+.container {
+  height: 100vh;
+  padding: 20px;
+  margin-left: 0;
+  background: colors.$BG_COLOR;
+
+  @include responsive.after(MD) {
+    margin-left: 130px;
+  }
+}

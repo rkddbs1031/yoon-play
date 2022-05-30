@@ -1,0 +1,97 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/mixins/responsive';
+
+.container {
+  position: fixed;
+  top: 0;
+  left: -140px;
+  z-index: 10;
+  @include flexbox.flexbox(center, center);
+  flex-direction: column;
+  width: 130px;
+  height: 100%;
+  overflow-y: scroll;
+  background: colors.$BG_COLOR;
+  border-right: 1px solid  rgba(colors.$ASIDE_COLOR, 0.7);
+  box-shadow: colors.$NAV_SHADOW 2px 0 8px 0;
+  transition: 0.3s;
+
+  @include responsive.after(MD) {
+    left: 0;
+  }
+
+  h2 {
+    @include flexbox.flexbox(center, center);
+    position: absolute;
+    top: 30px;
+    flex-direction: column;
+    margin: 0 auto;
+    font-size: 15px;
+    font-weight: 600;
+    color: colors.$MAIN_TEXT;
+    text-align: center;
+
+    .icon {
+      @include flexbox.flexbox(center,center);
+      width: 40px;
+      height: 40px;
+      margin-bottom: 8px;
+      background: #1a1a1a;
+      border-radius: 50%;
+
+      svg path {
+        fill: #2fe78b;
+      }
+    }
+  }
+
+  .nav ul {
+    @include flexbox.flexbox(center, center);
+    flex-direction: column;
+    width: 100px;
+
+    li {
+      width: 100%;
+
+      + li {
+        margin-top: 40px;
+      }
+
+      a {
+        @include flexbox.flexbox(center, center);
+        flex-direction: column;
+        font-size: 15px;
+        color: colors.$SUB_TEXT;
+        text-align: center;
+
+        span {
+          font-size: 14px;
+        }
+
+        svg {
+          padding: 5px;
+          margin-bottom: 10px;
+          border-radius: 50%;
+          transform: scale(1.9);
+
+          path {
+            fill: rgba(colors.$SUB_TEXT, 0.8);
+          }
+        }
+
+        &.isActive {
+          font-weight: 600;
+          color: colors.$MAIN_TEXT;
+          border-radius: 14px;
+
+          svg {
+            path {
+              fill: rgba(colors.$MAIN_TEXT, 0.8);
+            }
+          }
+        }
+      }
+    }
+  }
+}

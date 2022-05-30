@@ -1,0 +1,5 @@
+@use '/src/styles/constants/colors';
+
+.moodContainer {
+  color: colors.$MAIN_TEXT;
+}
