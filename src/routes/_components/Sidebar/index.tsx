@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 import styles from './sidebar.module.scss'
 
-const NAV_ITEMS = [
+const navData = [
   {
     id: 1,
     href: '/',
@@ -36,7 +36,7 @@ const Sidebar = () => {
       </h2>
       <nav className={styles.nav}>
         <ul>
-          {NAV_ITEMS.map((item) => (
+          {navData.map((item) => (
             <li key={item.id}>
               <NavLink to={item.href} className={({ isActive }) => cx({ [styles.isActive]: isActive })}>
                 {item.icon}
