@@ -1,5 +1,29 @@
 @use '/src/styles/constants/colors';
 
 .moodContainer {
+  padding: 50px;
   color: colors.$MAIN_TEXT;
+
+  h2 {
+    height: 50px;
+    font-size: 20px;
+    font-weight: 600;
+
+    svg {
+      display: inline-block;
+      margin: 2px 0 0 7px;
+      fill: #f8538b;
+      animation: loveMove 1.2s alternate infinite;
+    }
+
+    @keyframes loveMove {
+      0% {
+        transform: scale(0.95);
+      }
+
+      100% {
+        transform: scale(1.15);
+      }
+    }
+  }
 }
