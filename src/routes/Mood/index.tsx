@@ -9,6 +9,7 @@ import SubMood from './SubMood'
 import Modal from 'routes/_components/Modal/ModalFrame'
 import { Love } from 'assets/svgs'
 import styles from './mood.module.scss'
+import { NavLink } from 'react-router-dom'
 
 const Mood = () => {
   const [subMoodKey, setSubMoodKey] = useState<string>()
@@ -20,7 +21,11 @@ const Mood = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e?.preventDefault()
-    !(getMainMood && getSubMood) ? setIsVerified(true) : setIsVerified(false)
+    if (!(getMainMood && getSubMood)) {
+      setIsVerified(true)
+    } else {
+      setIsVerified(false)
+    }
   }
 
   const onClose = () => setIsVerified(false)
@@ -34,9 +39,15 @@ const Mood = () => {
       <form onSubmit={handleSubmit} className={styles.cateContainer}>
         <MainMood onItemChange={onItemChange} />
         {subMoodKey && <SubMood moodKey={subMoodKey} />}
-        <button type='submit' className={styles.moodSubmit}>
-          MOOD PLAY
-        </button>
+        {getMainMood && getSubMood ? (
+          <NavLink to='moodplay' className={styles.moodSubmit}>
+            MOOD PLAY
+          </NavLink>
+        ) : (
+          <button type='submit' className={styles.moodSubmit}>
+            MOOD PLAY
+          </button>
+        )}
       </form>
       <Modal isOpen={isVerified} onClose={onClose} width='400px' height='250px' text='알림창'>
         <p className={styles.modalText}>두개의 카테고리 모두 선택해주세요!</p>

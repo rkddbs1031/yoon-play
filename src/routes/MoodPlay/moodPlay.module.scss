@@ -1,0 +1,28 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+.moodPlayContainer {
+  color: colors.$MAIN_TEXT;
+
+  h2 {
+    height: 50px;
+    margin-bottom: 50px;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 50px;
+
+    svg {
+      vertical-align: -3px;
+      animation: emotionMove 1.2s alternate infinite;
+    }
+    @keyframes emotionMove {
+      0% {
+        transform: scale(0.95);
+      }
+
+      100% {
+        transform: scale(1.15);
+      }
+    }
+  }
+}

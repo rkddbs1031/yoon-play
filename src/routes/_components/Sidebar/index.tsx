@@ -13,12 +13,18 @@ const navData = [
   },
   {
     id: 2,
+    href: '/moodplay',
+    text: '무드 플레이',
+    icon: <Music />,
+  },
+  {
+    id: 3,
     href: 'myplay',
     text: '마이플레이',
     icon: <Play />,
   },
   {
-    id: 3,
+    id: 4,
     href: 'search',
     text: '검색',
     icon: <Search />,
