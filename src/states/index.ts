@@ -1,10 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { atom } from 'recoil'
 
-export const store = configureStore({
-  reducer: {},
-  devTools: process.env.NODE_ENV !== 'production',
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
+export const mainMoodItem = atom<string>({
+  key: '#mainMoodItem',
+  default: '',
 })
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export const subMoodItem = atom<string>({
+  key: '#subMoodItem',
+  default: '',
+})

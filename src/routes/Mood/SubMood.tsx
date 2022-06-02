@@ -1,8 +1,10 @@
 import { MouseEvent, useEffect } from 'react'
+import { useRecoilState } from 'recoil'
 
 import { cx } from 'styles'
 import { useState } from 'hooks'
-import { getSubMood } from 'utils/moodList'
+import { getSubMoodList } from 'utils/moodList'
+import { subMoodItem } from 'states'
 
 import styles from './mood.module.scss'
 
@@ -15,22 +17,22 @@ interface IList {
 }
 
 const SubMood = ({ moodKey }: IProps) => {
-  const [subMood, setSubMood] = useState<IList[]>()
-  const [mood, setMood] = useState<string>()
+  const [subMoodList, setSubMoodList] = useState<IList[]>()
+  const [submood, setSubMood] = useRecoilState(subMoodItem)
+
   const handleSubMoodClick = (e: MouseEvent<HTMLButtonElement>) => {
     const { key } = e.currentTarget.dataset
-    setMood(String(key))
+    setSubMood(String(key))
   }
 
   useEffect(() => {
-    const test = getSubMood(moodKey)
-    setSubMood(test)
+    setSubMoodList(getSubMoodList(moodKey))
   }, [moodKey])
 
   return (
     <ul className={styles.subMood}>
-      {subMood?.map((li) => (
-        <li key={li.id} className={cx({ [styles.isSubActive]: mood === li.text })}>
+      {subMoodList?.map((li) => (
+        <li key={li.id} className={cx({ [styles.isSubActive]: submood === li.text })}>
           <button type='button' data-key={li.text} onClick={handleSubMoodClick}>
             {li.text}
           </button>
