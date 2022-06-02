@@ -15,4 +15,8 @@ body {
   @include responsive.after(MD) {
     margin-left: 130px;
   }
+
+  .main {
+    padding: 50px;
+  }
 }
