@@ -43,9 +43,9 @@ const MOOD_LIST = [
   },
 ]
 
-const getMainMood = () => MOOD_LIST
+const getMainMoodList = () => MOOD_LIST
 
-const getSubMood = (value: string) => {
+const getSubMoodList = (value: string) => {
   const NEW_LIST = MOOD_LIST.filter((item) => {
     return item.key === value
   })
@@ -53,4 +53,4 @@ const getSubMood = (value: string) => {
   return NEW_LIST[0].list
 }
 
-export { MOOD_LIST, getMainMood, getSubMood }
+export { MOOD_LIST, getMainMoodList, getSubMoodList }
