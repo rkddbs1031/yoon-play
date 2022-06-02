@@ -12,12 +12,13 @@
     margin-bottom: 50px;
     font-size: 26px;
     font-weight: 600;
+    line-height: 50px;
     text-align: center;
 
     svg {
       display: inline-block;
       margin-left: 7px;
-      fill: #f8538b;
+      fill: colors.$LOVE_COLOR;
       animation: loveMove 1.2s alternate infinite;
     }
 
@@ -32,46 +33,10 @@
     }
   }
 
-  .mainMood {
-    @include flexbox.flexbox(center, center);
-
-    li {
-      button {
-        width: 180px;
-        padding: 15px;
-        font-size: 20px;
-        color: colors.$WHITE;
-        background: #222222;
-        border: 1px solid transparent;
-        border-radius: 10px;
-        box-shadow: #1a1a1a 2px 7px;
-
-        &:hover {
-          border: 1px solid #009855;
-        }
-
-        &:active {
-          box-shadow: #101010 2px 5px;
-          transform: translateY(2px);
-        }
-      }
-
-      + li {
-        margin-left: 20px;
-      }
-
-      &.isActive button {
-        font-weight: 600;
-        background: #009855;
-        box-shadow: #065c31 2px 7px;
-      }
-    }
-  }
-
+  .mainMood,
   .subMood {
-    gap: 20px;
-    margin-top: 50px;
     @include flexbox.flexbox(center, center);
+    gap: 30px;
 
     li {
       button {
@@ -81,31 +46,58 @@
         font-weight: 300;
         color: colors.$WHITE;
         background: #222222;
-        border: 1px solid transparent;
-        border-radius: 10px;
+        border: 2px solid transparent;
+        border-radius: 15px;
         box-shadow: #1a1a1a 2px 7px;
 
         &:hover {
-          border: 1px solid #009855;
+          border: 2px solid colors.$SIGNATURE_COLOR_LIGHT;
         }
 
         &:active {
-          box-shadow: #101010 2px 5px;
+          box-shadow: #1a1a1a 2px 5px;
           transform: translateY(2px);
         }
       }
 
+      &.isActive button,
       &.isSubActive button {
         font-weight: 600;
-        background: #009855;
-        box-shadow: #065c31 2px 7px;
+        background: colors.$SIGNATURE_COLOR_LIGHT;
+        box-shadow: colors.$SIGNATURE_COLOR_DARK 2px 7px;
+
+        &:active {
+          box-shadow: colors.$SIGNATURE_COLOR_DARK 2px 5px;
+          transform: translateY(2px);
+        }
       }
     }
   }
 
-  .moodSubmit {
-    padding: 10px;
-    color: colors.$WHITE;
-    border: 1px solid red;
+  .subMood {
+    margin-top: 50px;
   }
+
+  .moodSubmit {
+    display: block;
+    width: 180px;
+    padding: 23px 20px;
+    margin: 50px auto 0;
+    font-size: 17px;
+    font-weight: 600;
+    color: colors.$WHITE;
+    background: colors.$SIGNATURE_COLOR_LIGHT;
+    border-radius: 15px;
+    box-shadow: colors.$SIGNATURE_COLOR_DARK 2px 7px;
+    transition: 0.3s;
+
+    &:hover {
+      box-shadow: colors.$SIGNATURE_COLOR_DARK 2px 5px;
+      transform: translateY(2px);
+    }
+  }
+}
+
+.modalText {
+  text-align: center;
 }
