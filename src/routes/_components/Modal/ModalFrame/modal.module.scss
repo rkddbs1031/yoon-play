@@ -1,0 +1,38 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(colors.$BG_COLOR, 10%);
+  backdrop-filter: blur(5px);
+
+  .modalBox {
+    @include flexbox.flexbox(between, stretch);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    flex-direction: column;
+    padding: 20px;
+    background: colors.$WHITE;
+    border-radius: 10px;
+    box-shadow: colors.$NAV_SHADOW 2px 0 8px 0;
+    transform: translate(-50%, -50%);
+
+    .btnWrap {
+      @include flexbox.flexbox(end, center);
+
+      .closeBtn {
+        display: block;
+        padding: 10px 25px;
+        color: colors.$WHITE;
+        text-align: center;
+        background: colors.$SIGNATURE_COLOR_LIGHT;
+        border-radius: 10px;
+      }
+    }
+  }
+}
