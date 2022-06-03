@@ -10,6 +10,7 @@ import { Emotion } from 'assets/svgs'
 import styles from './moodPlay.module.scss'
 import GenreList from './GenreList'
 import PlayList from './PlayList'
+import Player from 'routes/_components/Player'
 
 const MoodPlay = () => {
   const [genre, setGenre] = useState('')
@@ -35,19 +36,27 @@ const MoodPlay = () => {
   )
 
   return (
-    <section className={styles.moodPlayContainer}>
-      <h2>
-        선택하신 기분, 분위기에 어울리는 장르들이에요! <Emotion />
-      </h2>
-      <GenreList onClickGenre={onClickGenre} />
-      {data && (
-        <ul className={styles.playlist}>
-          {data.map((item) => (
-            <PlayList key={item.id.videoId} item={item} />
-          ))}
-        </ul>
-      )}
-    </section>
+    <>
+      <section className={styles.moodPlayContainer}>
+        <h2>
+          선택하신 기분, 분위기에 어울리는 장르들이에요! <Emotion />
+        </h2>
+        <GenreList onClickGenre={onClickGenre} />
+        {data ? (
+          <div className={styles.result}>
+            <h3>{getSubMood}</h3>
+            <ul className={styles.playlist}>
+              {data.map((item) => (
+                <PlayList key={item.id.videoId} item={item} />
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <h3>장르를 선택해 주세요</h3>
+        )}
+      </section>
+      <Player />
+    </>
   )
 }
 export default MoodPlay
