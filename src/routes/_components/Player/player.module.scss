@@ -1,0 +1,91 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/mixins/responsive';
+@use '/src/styles/mixins/typography';
+
+.playerContaienr {
+  position: fixed;
+  bottom: 30px;
+  left: 160px;
+  z-index: 100;
+  width: 530px;
+  height: 60px;
+  color: colors.$MAIN_TEXT;
+  background: rgba(colors.$WHITE, 10%);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+
+  .player {
+    @include flexbox.flexbox(start, center);
+
+    .playerFrame {
+      display: none;
+    }
+
+    .cdWrap {
+      position: relative;
+      top: -30px;
+      left: 20px;
+      width: 70px;
+      height: 70px;
+      overflow: hidden;
+      border-radius: 50%;
+
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 30%;
+        height: 30%;
+        content: '';
+        background: colors.$BLACK;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .img {
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        transition: 0.3s;
+      }
+    }
+
+    .musicInfo {
+      flex-direction: column;
+      margin-left: 30px;
+      @include flexbox.flexbox(center, start);
+
+      dt {
+        display: none;
+      }
+
+      .title {
+        width: 250px;
+        margin-top: -12px;
+        font-size: 12px;
+        line-height: 20px;
+        @include typography.lineClamp(1, 15);
+        color: colors.$MAIN_TEXT;
+      }
+
+      .channelTitle {
+        margin-top: 7px;
+        font-size: 10px;
+        color: colors.$GRAYD;
+      }
+    }
+
+    .btns {
+      width: 80px;
+      margin-left: 50px;
+      @include flexbox.flexbox(between, center);
+
+      button svg path {
+        fill: colors.$WHITE;
+      }
+    }
+  }
+}
