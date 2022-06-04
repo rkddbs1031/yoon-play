@@ -15,20 +15,20 @@ const Mood = () => {
   const [subMoodKey, setSubMoodKey] = useState<string>('')
   const getMainMood = useRecoilValue(mainMoodItem)
   const getSubMood = useRecoilValue(subMoodItem)
-  const [isVerified, setIsVerified] = useState<boolean>(false)
+  const [isOpen, setIsOpened] = useState<boolean>(false)
 
   const onItemChange = (value: string) => setSubMoodKey(value)
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e?.preventDefault()
     if (!(getMainMood && getSubMood)) {
-      setIsVerified(true)
+      setIsOpened(true)
     } else {
-      setIsVerified(false)
+      setIsOpened(false)
     }
   }
 
-  const onClose = () => setIsVerified(false)
+  const handleModalClose = () => setIsOpened(false)
 
   return (
     <section className={styles.moodContainer}>
@@ -49,7 +49,7 @@ const Mood = () => {
           </button>
         )}
       </form>
-      <Modal isOpen={isVerified} onClose={onClose} width='400px' height='250px' text='알림창'>
+      <Modal isOpen={isOpen} onClose={handleModalClose} width='400px' height='250px' text='알림창'>
         <p className={styles.modalText}>두개의 카테고리 모두 선택해주세요!</p>
       </Modal>
     </section>
