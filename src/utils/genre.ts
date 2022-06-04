@@ -46,6 +46,10 @@ const HAPPY_LIST = [
     id: 4,
     text: '어쿠스틱',
   },
+  {
+    id: 5,
+    text: '힙합',
+  },
 ]
 
 const getGenreList = (value: string) => {
