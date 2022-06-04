@@ -15,7 +15,6 @@ interface IProps {
 const Card = ({ item }: IProps) => {
   const setMmusicItem = useSetRecoilState(musicPlayItem)
   const [myPlayList, setMyPlayList] = useRecoilState(MyPlayList)
-
   const [isOpen, setIsOpened] = useState<boolean>(false)
 
   const handleRemovePlayList = () => {

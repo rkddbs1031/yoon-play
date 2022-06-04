@@ -19,19 +19,21 @@ const GenreList = () => {
 
   return (
     getGenreList(mainMood) && (
-      <ul className={styles.list}>
-        {getGenreList(mainMood).map((item) => (
-          <li key={item.id} className={cx({ [styles.isActive]: genre === item.text })}>
-            <button type='button' data-key={item.text} onClick={handelClickGenre}>
-              <p>{item.text}</p>
-              <div className={styles.tag}>
-                <span>#{mainMood}</span>
-                <span>#{subMood}</span>
-              </div>
-            </button>
-          </li>
-        ))}
-      </ul>
+      <div className={styles.genreWrap}>
+        <ul className={styles.list}>
+          {getGenreList(mainMood).map((item) => (
+            <li key={item.id} className={cx({ [styles.isActive]: genre === item.text })}>
+              <button type='button' data-key={item.text} onClick={handelClickGenre}>
+                <p>{item.text}</p>
+                <div className={styles.tag}>
+                  <span>#{mainMood}</span>
+                  <span>#{subMood}</span>
+                </div>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
     )
   )
 }

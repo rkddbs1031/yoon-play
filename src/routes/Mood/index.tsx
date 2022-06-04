@@ -1,8 +1,8 @@
 import { FormEvent } from 'react'
 import { NavLink } from 'react-router-dom'
-import { useRecoilValue } from 'recoil'
+import { useRecoilValue, useResetRecoilState } from 'recoil'
 
-import { useState } from 'hooks'
+import { useState, useMount } from 'hooks'
 import { mainMoodItem, subMoodItem } from 'states'
 
 import { Love } from 'assets/svgs'
@@ -16,6 +16,7 @@ const Mood = () => {
   const getMainMood = useRecoilValue(mainMoodItem)
   const getSubMood = useRecoilValue(subMoodItem)
   const [isOpen, setIsOpened] = useState<boolean>(false)
+  const resetMainMood = useResetRecoilState(mainMoodItem)
 
   const onItemChange = (value: string) => setSubMoodKey(value)
 
@@ -29,6 +30,10 @@ const Mood = () => {
   }
 
   const handleModalClose = () => setIsOpened(false)
+
+  useMount(() => {
+    resetMainMood()
+  })
 
   return (
     <section className={styles.moodContainer}>
@@ -49,7 +54,7 @@ const Mood = () => {
           </button>
         )}
       </form>
-      <Modal isOpen={isOpen} onClose={handleModalClose} width='400px' height='250px' text='알림창'>
+      <Modal isOpen={isOpen} onClose={handleModalClose} width='400px' height='250px' text='알림창' btnText='확인'>
         <p className={styles.modalText}>두개의 카테고리 모두 선택해주세요!</p>
       </Modal>
     </section>

@@ -1,5 +1,6 @@
 @use '/src/styles/constants/colors';
 @use '/src/styles/mixins/flexbox';
+@use '/src/styles/mixins/responsive';
 
 .moodContainer {
   @include flexbox.flexbox(center, center);
@@ -8,9 +9,8 @@
   color: colors.$MAIN_TEXT;
 
   h2 {
-    height: 50px;
-    margin-bottom: 50px;
-    font-size: 26px;
+    margin-bottom: 30px;
+    font-size: 20px;
     font-weight: 600;
     line-height: 50px;
     text-align: center;
@@ -36,13 +36,13 @@
   .mainMood,
   .subMood {
     @include flexbox.flexbox(center, center);
-    gap: 30px;
+    gap: 15px;
 
     li {
       button {
-        width: 180px;
-        padding: 20px;
-        font-size: 17px;
+        width: 130px;
+        padding: 15px 0;
+        font-size: 13px;
         font-weight: 300;
         color: colors.$WHITE;
         background: colors.$BLACK2;
@@ -75,15 +75,15 @@
   }
 
   .subMood {
-    margin-top: 50px;
+    margin-top: 40px;
   }
 
   .moodSubmit {
     display: block;
-    width: 180px;
-    padding: 23px 20px;
-    margin: 50px auto 0;
-    font-size: 17px;
+    width: 130px;
+    padding: 18px 0;
+    margin: 40px auto 0;
+    font-size: 13px;
     font-weight: 600;
     color: colors.$WHITE;
     text-align: center;
@@ -95,6 +95,43 @@
     &:hover {
       box-shadow: colors.$SIGNATURE_COLOR_DARK 2px 5px;
       transform: translateY(2px);
+    }
+  }
+
+  a.moodSubmit {
+    padding: 20px 0 19px;
+  }
+
+  @include responsive.after(MD) {
+    h2 {
+      margin-bottom: 50px;
+      font-size: 26px;
+    }
+
+    .mainMood,
+    .subMood {
+      gap: 30px;
+
+      li button {
+        width: 180px;
+        padding: 20px;
+        font-size: 17px;
+      }
+    }
+
+    .subMood {
+      margin-top: 50px;
+    }
+
+    .moodSubmit {
+      width: 180px;
+      padding: 23px 20px;
+      margin: 50px auto 0;
+      font-size: 17px;
+    }
+
+    a.moodSubmit {
+      padding: 25px 20px;
     }
   }
 }

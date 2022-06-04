@@ -28,24 +28,31 @@ const MoodPlay = () => {
       staleTime: 5 * 10 * 1000,
     }
   )
-
   return (
     <section className={styles.moodPlayContainer}>
-      <h2>
-        선택하신 기분, 분위기에 어울리는 장르들이에요! <Emotion />
-      </h2>
-      <GenreList />
-      {data ? (
-        <div className={styles.result}>
-          <h3>{getSubMood}</h3>
-          <ul className={styles.playlists}>
-            {data.map((item) => (
-              <PlayListCard key={item.id.videoId} item={item} />
-            ))}
-          </ul>
-        </div>
+      {getMainMood && getSubMood ? (
+        <>
+          <h2>
+            선택하신 기분, 분위기에 어울리는 장르들이에요! <Emotion />
+          </h2>
+          <GenreList />
+          {data ? (
+            <div className={styles.result}>
+              <h3>{getSubMood}</h3>
+              <ul className={styles.playlists}>
+                {data.map((item) => (
+                  <PlayListCard key={item.id.videoId} item={item} />
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <h3>장르를 선택해 주세요!</h3>
+          )}
+        </>
       ) : (
-        <h3>장르를 선택해 주세요</h3>
+        <h2>
+          먼저 무드 선택을 해주세요! <Emotion />
+        </h2>
       )}
     </section>
   )
