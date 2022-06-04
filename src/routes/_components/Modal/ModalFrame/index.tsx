@@ -1,7 +1,6 @@
 import { ReactNode } from 'react'
 
 import Portal from '../index'
-
 import styles from './modal.module.scss'
 
 interface Props {

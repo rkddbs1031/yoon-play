@@ -1,34 +1,27 @@
-import { useRecoilValue } from 'recoil'
-import { MouseEvent, useEffect } from 'react'
-import { useState } from 'hooks'
-import { mainMoodItem, subMoodItem } from 'states'
+import { MouseEvent } from 'react'
+import { useRecoilValue, useRecoilState } from 'recoil'
+
+import { mainMoodItem, subMoodItem, genreItem } from 'states'
 import { getGenreList } from 'utils/genre'
 
 import { cx } from 'styles'
 import styles from './moodPlay.module.scss'
 
-interface IProps {
-  onClickGenre: (value: string) => void
-}
-
-const GenreList = ({ onClickGenre }: IProps) => {
-  const [genreActive, setGenreActive] = useState<string>('')
+const GenreList = () => {
   const mainMood = useRecoilValue(mainMoodItem)
   const subMood = useRecoilValue(subMoodItem)
+  const [genre, setGenre] = useRecoilState(genreItem)
 
   const handelClickGenre = (e: MouseEvent<HTMLButtonElement>) => {
     const { key } = e.currentTarget.dataset
-    setGenreActive(String(key))
+    setGenre(String(key))
   }
-  useEffect(() => {
-    onClickGenre(genreActive)
-  }, [genreActive, onClickGenre])
 
   return (
     getGenreList(mainMood) && (
       <ul className={styles.list}>
         {getGenreList(mainMood).map((item) => (
-          <li key={item.id} className={cx({ [styles.isActive]: genreActive === item.text })}>
+          <li key={item.id} className={cx({ [styles.isActive]: genre === item.text })}>
             <button type='button' data-key={item.text} onClick={handelClickGenre}>
               <p>{item.text}</p>
               <div className={styles.tag}>

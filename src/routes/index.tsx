@@ -1,11 +1,12 @@
 import { Routes, Route } from 'react-router-dom'
-import styles from './routes.module.scss'
 
 import Mood from './Mood'
 import MoodPlay from './MoodPlay'
 import MyPlay from './MyPlay'
 import Search from './Search'
 import Sidebar from './_components/Sidebar'
+import Player from 'routes/_components/Player'
+import styles from './routes.module.scss'
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route path='search' element={<Search />} />
           <Route path='*' element={<div>404</div>} />
         </Routes>
+        <Player />
       </main>
     </div>
   )

@@ -1,7 +1,7 @@
-import { Emotion, Music, Play, Search } from 'assets/svgs'
-import cx from 'classnames'
 import { NavLink } from 'react-router-dom'
 
+import { cx } from 'styles'
+import { Emotion, Music, Play, Search } from 'assets/svgs'
 import styles from './sidebar.module.scss'
 
 const navData = [
@@ -13,7 +13,7 @@ const navData = [
   },
   {
     id: 2,
-    href: '/moodplay',
+    href: 'moodplay',
     text: '무드 플레이',
     icon: <Music />,
   },

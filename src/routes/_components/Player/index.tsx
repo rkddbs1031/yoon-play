@@ -1,4 +1,5 @@
 import { useRecoilState, useRecoilValue } from 'recoil'
+
 import { useState, useEffect } from 'hooks'
 import { musicPlayItem, muscicPaused, MyPlayList } from 'states'
 
@@ -39,7 +40,7 @@ const Player = () => {
   }
 
   const handleRemovePlayList = () => {
-    setMyPlayList(myPlayList.filter((item) => item.videoId !== Object(musicItem).videoId))
+    setMyPlayList(myPlayList.filter((item) => item.id.videoId !== Object(musicItem).id.videoId))
     setIsVerified(false)
   }
   useEffect(() => {
@@ -49,17 +50,20 @@ const Player = () => {
   return (
     <>
       <section className={styles.playerContaienr}>
-        {musicItem.videoId ? (
+        {musicItem.id.videoId ? (
           <div className={styles.player}>
             <PlayerControl />
             <div className={styles.cdWrap}>
-              <div className={styles.img} style={{ backgroundImage: `url(${musicItem.imgUrl})` }} />
+              <div
+                className={styles.img}
+                style={{ backgroundImage: `url(${musicItem.snippet.thumbnails.high.url})` }}
+              />
             </div>
             <dl className={styles.musicInfo}>
               <dt>노래 제목</dt>
-              <dd className={styles.title}>{musicItem.title}</dd>
+              <dd className={styles.title}>{musicItem.snippet.title}</dd>
               <dt>가수</dt>
-              <dd className={styles.channelTitle}>{musicItem.channelTitle}</dd>
+              <dd className={styles.channelTitle}>{musicItem.snippet.channelTitle}</dd>
             </dl>
             <div className={styles.btns}>
               <button type='button'>
@@ -100,8 +104,8 @@ const Player = () => {
           </div>
         )}
       </section>
-      <Modal isOpen={isVerified} onClose={handleModalClose} width='400px' height='300px' text='플레이리스트 추가'>
-        {myPlayList.filter((el) => el.videoId.includes(musicItem.videoId)).length > 0 ? (
+      <Modal isOpen={isVerified} onClose={handleModalClose} width='400px' height='300px' text='플레이리스트 설정'>
+        {myPlayList.filter((el) => el.id.videoId.includes(musicItem.id.videoId)).length > 0 ? (
           <>
             <p className={styles.modalText}>플레이리스트에서 삭제 하시겠습니까?</p>
             <button type='button' className={styles.addBtn} onClick={handleRemovePlayList}>

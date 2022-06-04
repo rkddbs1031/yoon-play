@@ -7,8 +7,8 @@ export interface IMusicPlayItem {
 
 export interface IImageSize {
   url: string
-  width: number
-  height: number
+  width: number | string
+  height: number | string
 }
 
 export interface IThumbnails {
