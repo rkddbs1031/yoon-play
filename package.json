@@ -41,6 +41,7 @@
     "react-scripts": "5.0.1",
     "react-use": "^17.3.2",
     "recoil": "^0.7.3-alpha.2",
+    "recoil-persist": "^4.2.0",
     "store": "^2.0.12",
     "web-vitals": "^2.1.0"
   },
