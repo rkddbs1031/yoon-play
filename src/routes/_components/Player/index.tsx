@@ -2,7 +2,7 @@ import { useRecoilState, useRecoilValue } from 'recoil'
 import { useState, useEffect } from 'hooks'
 import { musicPlayItem, muscicPaused, MyPlayList } from 'states'
 
-import PlayerConrol from './PlayerControl'
+import PlayerControl from './PlayerControl'
 import Modal from 'routes/_components/Modal/ModalFrame'
 import styles from './player.module.scss'
 import { MusicPlay, MusicPaused, ArrowLeft, ArrowRight, Music, BookMark } from 'assets/svgs'
@@ -38,6 +38,10 @@ const Player = () => {
     setIsVerified(false)
   }
 
+  const handleRemovePlayList = () => {
+    setMyPlayList(myPlayList.filter((item) => item.videoId !== Object(musicItem).videoId))
+    setIsVerified(false)
+  }
   useEffect(() => {
     setIsPaused(false)
   }, [musicItem, setIsPaused])
@@ -47,7 +51,7 @@ const Player = () => {
       <section className={styles.playerContaienr}>
         {musicItem.videoId ? (
           <div className={styles.player}>
-            <PlayerConrol />
+            <PlayerControl />
             <div className={styles.cdWrap}>
               <div className={styles.img} style={{ backgroundImage: `url(${musicItem.imgUrl})` }} />
             </div>
@@ -97,10 +101,21 @@ const Player = () => {
         )}
       </section>
       <Modal isOpen={isVerified} onClose={handleModalClose} width='400px' height='300px' text='플레이리스트 추가'>
-        <p className={styles.modalText}>플레이리스트에 추가하시겠습니까?</p>
-        <button type='button' className={styles.addBtn} onClick={handleAddPlayList}>
-          추가하기
-        </button>
+        {myPlayList.filter((el) => el.videoId.includes(musicItem.videoId)).length > 0 ? (
+          <>
+            <p className={styles.modalText}>플레이리스트에서 삭제 하시겠습니까?</p>
+            <button type='button' className={styles.addBtn} onClick={handleRemovePlayList}>
+              삭제하기
+            </button>
+          </>
+        ) : (
+          <>
+            <p className={styles.modalText}>플레이리스트에 추가하시겠습니까?</p>
+            <button type='button' className={styles.addBtn} onClick={handleAddPlayList}>
+              추가하기
+            </button>
+          </>
+        )}
       </Modal>
     </>
   )
