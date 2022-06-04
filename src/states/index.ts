@@ -68,3 +68,8 @@ export const MyPlayList = atom<IItem[]>({
   default: [],
   effects_UNSTABLE: [persistAtom], // 새로고침해도 유지
 })
+
+export const bookmarkModalOpen = atom<boolean>({
+  key: '#bookmarkModalOpen',
+  default: false,
+})
