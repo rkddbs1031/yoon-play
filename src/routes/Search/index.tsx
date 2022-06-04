@@ -10,7 +10,7 @@ import PlayListCard from 'routes/_components/PlayListCard'
 
 const Search = () => {
   const [searchText, setSearchText] = useState('')
-  const [test, setTest] = useState(false)
+  const [isActive, setIsActive] = useState(false)
 
   const { data, refetch } = useQuery(
     ['getSearchPlaylistApi', searchText],
@@ -19,20 +19,20 @@ const Search = () => {
         return res.data.items
       }),
     {
-      enabled: !!(searchText.length > 0 && test),
+      enabled: !!(searchText.length > 0 && isActive),
       refetchOnWindowFocus: false,
       useErrorBoundary: true,
       cacheTime: 5 * 10 * 1000,
       staleTime: 5 * 10 * 1000,
       onSuccess: () => {
-        setTest(false)
+        setIsActive(false)
       },
     }
   )
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setTest(true)
+    setIsActive(true)
     refetch()
   }
 
