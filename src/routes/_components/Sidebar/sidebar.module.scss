@@ -37,11 +37,11 @@
       width: 40px;
       height: 40px;
       margin-bottom: 8px;
-      background: #1a1a1a;
+      background: colors.$BLACKA;
       border-radius: 50%;
 
       svg path {
-        fill: #2fe78b;
+        fill: colors.$SIGNATURE_COLOR_LIGHT;
       }
     }
   }
