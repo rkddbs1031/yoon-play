@@ -22,15 +22,16 @@
 
   @include responsive.after(MD) {
     left: 160px;
-    width: 580px;
+    width: 600px;
     transform: translateX(0);
   }
 
   .player {
-    @include flexbox.flexbox(center, center);
+    @include flexbox.flexbox(between, center);
     height: inherit;
+    padding: 0 20px;
 
-    @include responsive.after(MD) {
+    @include responsive.after(SD) {
       @include flexbox.flexbox(start, center);
     }
 
@@ -38,23 +39,37 @@
       display: none;
     }
 
-    .cdWrap {
+    .cdWrap,
+    .logo {
       position: relative;
       top: -20px;
-      left: 10px;
+      left: 20px;
       display: none;
-      width: 70px;
-      height: 70px;
+      width: 80px;
+      height: 80px;
       overflow: hidden;
       border-radius: 50%;
 
-      @include responsive.after(MD) {
-        left: 20px;
-      }
       @include responsive.after(SD) {
         display: block;
+        margin-right: 40px;
       }
+    }
 
+    .logo {
+      @include flexbox.flexbox(center, center);
+      flex-direction: column;
+      font-size: 12px;
+      color: colors.$MAIN_TEXT;
+      background: colors.$BLACKA;
+      border: 1px solid colors.$SIGNATURE_COLOR_DARK;
+
+      .icon svg path {
+        fill: colors.$SIGNATURE_COLOR_LIGHT;
+      }
+    }
+
+    .cdWrap {
       &::before {
         position: absolute;
         top: 50%;
@@ -78,20 +93,38 @@
     }
 
     .musicInfo {
-      @include flexbox.flexbox(center, start);
-      flex-direction: column;
-      margin-left: 40px;
+      width: 130px;
+
+      @include responsive.after(M) {
+        width: 50%;
+      }
+      @include responsive.after(ML) {
+        max-width: 350px;
+      }
+      @include responsive.after(SD) {
+        width: 100%;
+        max-width: 400px;
+      }
+
+      @include responsive.after(MD) {
+        width: 300px;
+        margin-right: 20px;
+      }
 
       dt {
         display: none;
       }
 
-      .title {
-        width: 250px;
+      .title,
+      .playTitle {
         font-size: 13px;
         line-height: 20px;
-        @include typography.lineClamp(1, 18);
         color: colors.$MAIN_TEXT;
+      }
+
+      // 재생목록 있을 때 타이틀
+      .title {
+        @include typography.lineClamp(1, 18);
       }
 
       .channelTitle {
@@ -99,53 +132,35 @@
         font-size: 12px;
         color: colors.$GRAYD;
       }
-
-      @include responsive.after(SD) {
-        .title { width: 400px; }
-      }
-
-      @include responsive.after(MD) {
-        .title { width: 250px; }
-      }
     }
 
     .btns {
-      width: 80px;
-      margin-left: 50px;
+      width: 120px;
+      overflow: hidden;
       @include flexbox.flexbox(between, center);
+
+      @include responsive.after(SD) {
+        position: absolute;
+        right: 20px;
+      }
+
+      .commonBtn {
+        @include flexbox.flexbox(between, center);
+        width: 80px;
+      }
 
       button svg path {
         fill: colors.$WHITE;
       }
-    }
 
-    .addPlayList {
-      margin-left: 30px;
+      .addPlayList {
+        svg path {
+          transition: 0.3s;
+        }
 
-      svg path {
-        transition: 0.3s;
-      }
-
-      &:hover svg path {
-        fill: colors.$SIGNATURE_COLOR_LIGHT;
-      }
-    }
-
-    h2 {
-      @include flexbox.flexbox(center, center);
-      position: relative;
-      top: -20px;
-      left: 20px;
-      flex-direction: column;
-      width: 80px;
-      height: 80px;
-      font-size: 12px;
-      color: colors.$MAIN_TEXT;
-      background: colors.$BLACKA;
-      border-radius: 50%;
-
-      .icon svg path {
-        fill: colors.$SIGNATURE_COLOR_LIGHT;
+        &:hover svg path {
+          fill: colors.$SIGNATURE_COLOR_LIGHT;
+        }
       }
     }
 

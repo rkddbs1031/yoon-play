@@ -5,7 +5,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 20;
+  z-index: 30;
   width: 100%;
   height: 100vh;
   background: rgba(colors.$BG_COLOR, 10%);
@@ -39,6 +39,7 @@
         color: colors.$WHITE;
         text-align: center;
         background: colors.$SIGNATURE_COLOR_LIGHT;
+        border: 1px solid colors.$SIGNATURE_COLOR_LIGHT;
         border-radius: 10px;
       }
     }

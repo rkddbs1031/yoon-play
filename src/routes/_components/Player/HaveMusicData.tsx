@@ -33,15 +33,17 @@ const HaveMusicData = () => {
         <dd className={styles.channelTitle}>{musicItem.snippet.channelTitle}</dd>
       </dl>
       <div className={styles.btns}>
-        <button type='button'>
-          <ArrowLeft />
-        </button>
-        <button type='button' onClick={handleMusicPlay}>
-          {isPaused ? <MusicPlay /> : <MusicPaused />}
-        </button>
-        <button type='button'>
-          <ArrowRight />
-        </button>
+        <div className={styles.commonBtn}>
+          <button type='button'>
+            <ArrowLeft />
+          </button>
+          <button type='button' onClick={handleMusicPlay}>
+            {isPaused ? <MusicPlay /> : <MusicPaused />}
+          </button>
+          <button type='button'>
+            <ArrowRight />
+          </button>
+        </div>
         <button type='button' onClick={handleModalOpen} className={styles.addPlayList}>
           <BookMark />
         </button>

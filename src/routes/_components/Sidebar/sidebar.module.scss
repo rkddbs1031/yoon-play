@@ -6,7 +6,7 @@
   position: fixed;
   top: 0;
   left: -140px;
-  z-index: 10;
+  z-index: 20;
   @include flexbox.flexbox(start, center);
   flex-direction: column;
   width: 130px;

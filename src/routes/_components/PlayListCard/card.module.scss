@@ -12,9 +12,11 @@
 
   dl {
     position: relative;
+    @include flexbox.flexbox(center, start);
+    flex-direction: column;
 
     .imgInfo {
-      width: 75%;
+      width: 85%;
       height: 100px;
       margin-bottom: 20px;
       background: colors.$BLACK;
@@ -38,11 +40,12 @@
 
     .musicTitle {
       @include typography.lineClamp(3, 24);
+      width: 85%;
       margin-bottom: 10px;
       font-size: 14px;
       line-height: 23px;
       color: colors.$TEXT_COLOR_1;
-      text-align: left;
+      text-align: justify;
     }
 
     .musicInfo {

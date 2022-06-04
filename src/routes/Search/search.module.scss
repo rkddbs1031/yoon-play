@@ -1,4 +1,5 @@
 @use '/src/styles/constants/colors';
+@use '/src/styles/mixins/responsive';
 
 .searchContainer {
   color: colors.$MAIN_TEXT;
@@ -12,7 +13,7 @@
 
   .inputBox {
     position: relative;
-    width: 700px;
+    width: 100%;
 
     input {
       width: 100%;
@@ -34,6 +35,9 @@
         fill: colors.$SUB_TEXT;
       }
     }
+    @include responsive.after(LD) {
+      width: 700px;
+    }
   }
 
   .result {
@@ -44,6 +48,24 @@
       margin: 30px 0 20px;
       font-size: 20px;
       line-height: 50px;
+    }
+
+    .playlists {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+
+      @include responsive.after(SD) {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      @include responsive.after(MD) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      @include responsive.after(LD) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
     }
   }
 }
