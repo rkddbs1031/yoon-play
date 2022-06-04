@@ -1,4 +1,5 @@
 import { FormEvent } from 'react'
+import { NavLink } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
 
 import { useState } from 'hooks'
@@ -9,10 +10,9 @@ import SubMood from './SubMood'
 import Modal from 'routes/_components/Modal/ModalFrame'
 import { Love } from 'assets/svgs'
 import styles from './mood.module.scss'
-import { NavLink } from 'react-router-dom'
 
 const Mood = () => {
-  const [subMoodKey, setSubMoodKey] = useState<string>()
+  const [subMoodKey, setSubMoodKey] = useState<string>('')
   const getMainMood = useRecoilValue(mainMoodItem)
   const getSubMood = useRecoilValue(subMoodItem)
   const [isVerified, setIsVerified] = useState<boolean>(false)

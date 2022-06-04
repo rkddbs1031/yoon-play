@@ -48,14 +48,14 @@
         background: colors.$BLACK2;
         border: 2px solid transparent;
         border-radius: 15px;
-        box-shadow: #1a1a1a 2px 7px;
+        box-shadow: colors.$BLACKA 2px 7px;
 
         &:hover {
           border: 2px solid colors.$SIGNATURE_COLOR_LIGHT;
         }
 
         &:active {
-          box-shadow: #1a1a1a 2px 5px;
+          box-shadow: colors.$BLACKA 2px 5px;
           transform: translateY(2px);
         }
       }
