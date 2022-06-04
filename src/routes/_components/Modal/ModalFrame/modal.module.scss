@@ -5,6 +5,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 20;
   width: 100%;
   height: 100vh;
   background: rgba(colors.$BG_COLOR, 10%);
@@ -16,13 +17,20 @@
     top: 50%;
     left: 50%;
     flex-direction: column;
-    padding: 20px;
     background: colors.$WHITE;
     border-radius: 10px;
     box-shadow: colors.$NAV_SHADOW 2px 0 8px 0;
     transform: translate(-50%, -50%);
 
+    .modalTitle {
+      padding: 20px 20px 15px;
+      font-size: 15px;
+      color: colors.$SUB_TEXT;
+      border-bottom: 1px solid rgba(colors.$SUB_TEXT, 0.6);
+    }
+
     .btnWrap {
+      padding: 0 20px 20px;
       @include flexbox.flexbox(end, center);
 
       .closeBtn {

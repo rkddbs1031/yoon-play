@@ -7,8 +7,8 @@
   position: fixed;
   bottom: 30px;
   left: 160px;
-  z-index: 100;
-  width: 530px;
+  z-index: 15;
+  width: 580px;
   height: 60px;
   color: colors.$MAIN_TEXT;
   background: rgba(colors.$WHITE, 10%);
@@ -17,6 +17,7 @@
 
   .player {
     @include flexbox.flexbox(start, center);
+    height: inherit;
 
     .playerFrame {
       display: none;
@@ -24,7 +25,7 @@
 
     .cdWrap {
       position: relative;
-      top: -30px;
+      top: -20px;
       left: 20px;
       width: 70px;
       height: 70px;
@@ -54,9 +55,9 @@
     }
 
     .musicInfo {
-      flex-direction: column;
-      margin-left: 30px;
       @include flexbox.flexbox(center, start);
+      flex-direction: column;
+      margin-left: 40px;
 
       dt {
         display: none;
@@ -64,16 +65,15 @@
 
       .title {
         width: 250px;
-        margin-top: -12px;
-        font-size: 12px;
+        font-size: 13px;
         line-height: 20px;
-        @include typography.lineClamp(1, 15);
+        @include typography.lineClamp(1, 18);
         color: colors.$MAIN_TEXT;
       }
 
       .channelTitle {
-        margin-top: 7px;
-        font-size: 10px;
+        margin-top: 5px;
+        font-size: 12px;
         color: colors.$GRAYD;
       }
     }
@@ -87,5 +87,67 @@
         fill: colors.$WHITE;
       }
     }
+
+    .addPlayList {
+      margin-left: 30px;
+
+      svg path {
+        transition: 0.3s;
+      }
+
+      &:hover svg path {
+        fill: colors.$SIGNATURE_COLOR_LIGHT;
+      }
+    }
+
+    h2 {
+      @include flexbox.flexbox(center, center);
+      position: relative;
+      top: -20px;
+      left: 20px;
+      flex-direction: column;
+      width: 80px;
+      height: 80px;
+      font-size: 12px;
+      color: colors.$MAIN_TEXT;
+      background: colors.$BLACKA;
+      border-radius: 50%;
+
+      .icon svg path {
+        fill: colors.$SIGNATURE_COLOR_LIGHT;
+      }
+    }
+
+    .musicPlayInfo {
+      dt {
+        display: none;
+      }
+
+      .title {
+        width: 250px;
+        margin-left: 30px;
+        font-size: 13px;
+        color: colors.$MAIN_TEXT;
+      }
+    }
   }
+}
+
+.modalText {
+  font-weight: 600;
+  color: colors.$BLACK2;
+  text-align: center;
+}
+
+.addBtn {
+  position: absolute;
+  right: 105px;
+  bottom: 20px;
+  display: block;
+  padding: 10px 25px;
+  font-size: 13px;
+  color: colors.$SIGNATURE_COLOR_LIGHT;
+  text-align: center;
+  border: 1px solid colors.$SIGNATURE_COLOR_LIGHT;
+  border-radius: 10px;
 }

@@ -1,22 +1,23 @@
-import { useSetRecoilState } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { IItem } from 'types/playlist'
-import { musicPlayItem } from 'states'
+import { musicPlayItem, MyPlayList } from 'states'
 
-import { MusicPlay, FillHeart, OutlineHeart } from 'assets/svgs'
 import styles from './moodPlay.module.scss'
+import { MusicPlay, FillHeart, OutlineHeart } from 'assets/svgs'
 
 interface IProps {
   item: IItem
 }
 
 const PlayList = ({ item }: IProps) => {
-  const setMmusicPlayItem = useSetRecoilState(musicPlayItem)
+  const setMmusicItem = useSetRecoilState(musicPlayItem)
+  const myPlayList = useRecoilValue(MyPlayList)
 
   const handleMusicPlay = () => {
     const { videoId } = item.id
     const { channelTitle, title } = item.snippet
     const imgUrl = item.snippet.thumbnails.high.url
-    setMmusicPlayItem({
+    setMmusicItem({
       videoId,
       channelTitle,
       title,
@@ -44,7 +45,11 @@ const PlayList = ({ item }: IProps) => {
           </div>
           <div className={styles.icon}>
             <MusicPlay className={styles.play} />
-            <OutlineHeart className={styles.heart} />
+            {myPlayList.filter((el) => el.videoId.includes(item.id.videoId)).length > 0 ? (
+              <FillHeart className={styles.heart} />
+            ) : (
+              <OutlineHeart className={styles.heart} />
+            )}
           </div>
         </dl>
       </button>
