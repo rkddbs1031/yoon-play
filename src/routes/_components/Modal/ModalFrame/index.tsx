@@ -5,14 +5,15 @@ import styles from './modal.module.scss'
 
 interface Props {
   isOpen: boolean
-  onClose: () => void
+  onClose?: () => void
   children?: ReactNode
   width: string
   height: string
   text?: string
+  btnText?: string
 }
 
-const ModalFrame = ({ isOpen, onClose, children, width, height, text }: Props) => {
+const ModalFrame = ({ isOpen, onClose, children, width, height, text, btnText }: Props) => {
   if (!isOpen) return null
 
   return (
@@ -22,9 +23,11 @@ const ModalFrame = ({ isOpen, onClose, children, width, height, text }: Props) =
           <p className={styles.modalTitle}>{text}</p>
           {children}
           <div className={styles.btnWrap}>
-            <button type='button' className={styles.closeBtn} onClick={onClose}>
-              닫기
-            </button>
+            {btnText && (
+              <button type='button' className={styles.closeBtn} onClick={onClose}>
+                {btnText}
+              </button>
+            )}
           </div>
         </div>
       </div>
