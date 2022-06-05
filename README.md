@@ -1,11 +1,14 @@
 # yoon-play🎵
 ## 배포 링크 
-https://yoon-play.netlify.app/
+> https://yoon-play.netlify.app/
 
 ## 기술 스택
 > React, TypeScript, Recoil, scss
 
 > Youtube API, Figma
+
+### 하단 링크를 통해 api key를 발급 받을 수 있습니다.  :)
+> https://console.cloud.google.com/apis/dashboard
 
 <br/>
 
