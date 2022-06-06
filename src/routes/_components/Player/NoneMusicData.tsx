@@ -1,18 +1,18 @@
 import styles from './player.module.scss'
-import { MusicPlay, ArrowLeft, ArrowRight, Music } from 'assets/svgs'
+import { PlayIcon, PrevPlayIcon, NextPlayIcon, LogoIcon } from 'assets/svgs'
 
 const MUSIC_ICON = [
   {
     id: 1,
-    icon: <ArrowLeft />,
+    icon: <PrevPlayIcon />,
   },
   {
     id: 2,
-    icon: <MusicPlay />,
+    icon: <PlayIcon />,
   },
   {
     id: 3,
-    icon: <ArrowRight />,
+    icon: <NextPlayIcon />,
   },
 ]
 
@@ -21,7 +21,7 @@ const NoneMusicData = () => {
     <div className={styles.player}>
       <h2 className={styles.logo}>
         <div className={styles.icon}>
-          <Music />
+          <LogoIcon />
         </div>
         Yoon Play
       </h2>

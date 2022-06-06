@@ -4,7 +4,7 @@ import { useRecoilValue } from 'recoil'
 import { getPlaylistApi } from 'services/playlist'
 import { mainMoodItem, subMoodItem, genreItem } from 'states'
 
-import { Emotion } from 'assets/svgs'
+import { EmotionIcon } from 'assets/svgs'
 import GenreList from './GenreList'
 import PlayListCard from 'routes/_components/PlayListCard'
 import styles from './moodPlay.module.scss'
@@ -33,7 +33,7 @@ const MoodPlay = () => {
       {getMainMood && getSubMood ? (
         <>
           <h2>
-            선택하신 기분, 분위기에 어울리는 장르들이에요! <Emotion />
+            선택하신 기분, 분위기에 어울리는 장르들이에요! <EmotionIcon />
           </h2>
           <GenreList />
           {data ? (
@@ -51,7 +51,7 @@ const MoodPlay = () => {
         </>
       ) : (
         <h2>
-          먼저 무드 선택을 해주세요! <Emotion />
+          먼저 무드 선택을 해주세요! <EmotionIcon />
         </h2>
       )}
     </section>

@@ -5,7 +5,7 @@ import { useRecoilValue, useResetRecoilState } from 'recoil'
 import { useState, useMount } from 'hooks'
 import { mainMoodItem, subMoodItem } from 'states'
 
-import { Love } from 'assets/svgs'
+import { LoveIcon } from 'assets/svgs'
 import MainMood from './MainMood'
 import SubMood from './SubMood'
 import Modal from 'routes/_components/Modal/ModalFrame'
@@ -39,7 +39,7 @@ const Mood = () => {
     <section className={styles.moodContainer}>
       <h2>
         당신의 기분과 분위기를 선택해주세요
-        <Love />
+        <LoveIcon />
       </h2>
       <form onSubmit={handleSubmit} className={styles.cateContainer}>
         <MainMood onItemChange={onItemChange} />

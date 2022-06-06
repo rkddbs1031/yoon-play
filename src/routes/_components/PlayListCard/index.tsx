@@ -6,7 +6,7 @@ import { musicPlayItem, MyPlayList } from 'states'
 
 import Modal from 'routes/_components/Modal/ModalFrame'
 import styles from './card.module.scss'
-import { MusicPlay, FillHeart, OutlineHeart } from 'assets/svgs'
+import { PlayIcon, FillHeartIcon, OutlineHeartIcon } from 'assets/svgs'
 
 interface IProps {
   item: IItem
@@ -45,11 +45,11 @@ const Card = ({ item }: IProps) => {
               <dd>{item.snippet.channelTitle}</dd>
             </div>
             <div className={styles.icon}>
-              <MusicPlay className={styles.play} />
+              <PlayIcon className={styles.play} />
               {myPlayList.filter((el) => el.id.videoId.includes(item.id.videoId)).length > 0 ? (
-                <FillHeart className={styles.heart} />
+                <FillHeartIcon className={styles.heart} />
               ) : (
-                <OutlineHeart className={styles.heart} />
+                <OutlineHeartIcon className={styles.heart} />
               )}
             </div>
           </dl>

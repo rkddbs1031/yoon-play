@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 
 import { cx } from 'styles'
-import { Emotion, Music, Play, SearchIcon, Hamburger, Close } from 'assets/svgs'
+import { LogoIcon, EmotionIcon, MoodPlayIcon, MyPlayIcon, SearchIcon, HamburgerIcon, CloseIcon } from 'assets/svgs'
 import styles from './sidebar.module.scss'
 import { useState } from 'react'
 
@@ -10,19 +10,19 @@ const navData = [
     id: 1,
     href: '/',
     text: '무드선택',
-    icon: <Emotion />,
+    icon: <EmotionIcon />,
   },
   {
     id: 2,
     href: 'moodplay',
     text: '무드 플레이',
-    icon: <Music />,
+    icon: <MoodPlayIcon />,
   },
   {
     id: 3,
     href: 'myplay',
     text: '마이플레이',
-    icon: <Play />,
+    icon: <MyPlayIcon />,
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ const Sidebar = () => {
       <aside className={cx(styles.container, { [styles.show]: sidebarDrawer })}>
         <h2>
           <div className={styles.icon}>
-            <Music />
+            <LogoIcon />
           </div>
           Yoon Play
         </h2>
@@ -59,11 +59,11 @@ const Sidebar = () => {
           </ul>
         </nav>
         <button type='button' onClick={handleSidebar} className={styles.closeIcon}>
-          <Close />
+          <CloseIcon />
         </button>
       </aside>
       <button type='button' onClick={handleSidebar} className={styles.hamburger}>
-        <Hamburger />
+        <HamburgerIcon />
       </button>
     </>
   )

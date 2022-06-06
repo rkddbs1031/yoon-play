@@ -5,7 +5,7 @@ import { muscicPaused, musicPlayItem, bookmarkModalOpen } from 'states'
 
 import PlayerControl from './PlayerControl'
 import styles from './player.module.scss'
-import { MusicPlay, MusicPaused, ArrowLeft, ArrowRight, BookMark } from 'assets/svgs'
+import { PlayIcon, PauseIcon, PrevPlayIcon, NextPlayIcon, BookMarkIcon } from 'assets/svgs'
 
 const HaveMusicData = () => {
   const musicItem = useRecoilValue(musicPlayItem)
@@ -35,17 +35,17 @@ const HaveMusicData = () => {
       <div className={styles.btns}>
         <div className={styles.commonBtn}>
           <button type='button'>
-            <ArrowLeft />
+            <PrevPlayIcon />
           </button>
           <button type='button' onClick={handleMusicPlay}>
-            {isPaused ? <MusicPlay /> : <MusicPaused />}
+            {isPaused ? <PlayIcon /> : <PauseIcon />}
           </button>
           <button type='button'>
-            <ArrowRight />
+            <NextPlayIcon />
           </button>
         </div>
         <button type='button' onClick={handleModalOpen} className={styles.addPlayList}>
-          <BookMark />
+          <BookMarkIcon />
         </button>
       </div>
     </div>
