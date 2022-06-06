@@ -3,6 +3,7 @@ import { useRecoilState } from 'recoil'
 
 import { useState } from 'hooks'
 import { getSubMoodList } from 'utils/moodList'
+import { ISubMoodList } from 'types/playlist'
 import { subMoodItem } from 'states'
 
 import { cx } from 'styles'
@@ -11,13 +12,9 @@ import styles from './mood.module.scss'
 interface IProps {
   moodKey: string
 }
-interface IList {
-  id: number
-  text: string
-}
 
 const SubMood = ({ moodKey }: IProps) => {
-  const [subMoodList, setSubMoodList] = useState<IList[]>()
+  const [subMoodList, setSubMoodList] = useState<ISubMoodList[]>()
   const [submood, setSubMood] = useRecoilState(subMoodItem)
 
   const handleSubMoodClick = (e: MouseEvent<HTMLButtonElement>) => {
