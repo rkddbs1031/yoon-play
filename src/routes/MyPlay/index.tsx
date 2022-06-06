@@ -4,14 +4,18 @@ import { MyPlayList } from 'states'
 
 import PlayListCard from 'routes/_components/PlayListCard'
 import styles from './myplay.module.scss'
+import { EmotionIcon } from 'assets/svgs'
 
 const MyPlay = () => {
   const myPlayList = useRecoilValue(MyPlayList)
 
   return (
     <section className={styles.myplayContainer}>
-      <h2>나의 플레이리스트</h2>
-      {myPlayList ? (
+      <h2>
+        나의 플레이리스트
+        <EmotionIcon />
+      </h2>
+      {myPlayList.length > 0 ? (
         <ul className={styles.playlists}>
           {myPlayList.map((item) => (
             <PlayListCard key={item.id.videoId} item={item} />
