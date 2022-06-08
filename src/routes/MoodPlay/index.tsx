@@ -1,33 +1,21 @@
-import { useQuery } from 'react-query'
-import { useRecoilValue } from 'recoil'
+import { useRecoilValue, useResetRecoilState } from 'recoil'
 
-import { getPlaylistApi } from 'services/playlist'
 import { mainMoodItem, subMoodItem, genreItem } from 'states'
+import { useUnmount } from 'hooks'
 
 import { EmotionIcon } from 'assets/svgs'
 import GenreList from './GenreList'
-import PlayListCard from 'routes/_components/PlayListCard'
+import ResultList from './ResultList'
 import styles from './moodPlay.module.scss'
 
 const MoodPlay = () => {
   const genre = useRecoilValue(genreItem)
   const getMainMood = useRecoilValue(mainMoodItem)
   const getSubMood = useRecoilValue(subMoodItem)
+  const resetGenre = useResetRecoilState(genreItem)
 
-  const { data } = useQuery(
-    ['getPlaylistApi', genre, getMainMood, getSubMood],
-    () =>
-      getPlaylistApi({ genre, mainMood: getMainMood, subMood: getSubMood }).then((res) => {
-        return res.data.items
-      }),
-    {
-      enabled: !!(genre && getMainMood && getSubMood),
-      refetchOnWindowFocus: false,
-      useErrorBoundary: true,
-      cacheTime: 5 * 10 * 1000,
-      staleTime: 5 * 10 * 1000,
-    }
-  )
+  useUnmount(() => resetGenre())
+
   return (
     <section className={styles.moodPlayContainer}>
       {getMainMood && getSubMood ? (
@@ -36,18 +24,10 @@ const MoodPlay = () => {
             선택하신 기분, 분위기에 어울리는 장르들이에요! <EmotionIcon />
           </h2>
           <GenreList />
-          {data ? (
-            <div className={styles.result}>
-              <h3>{getSubMood}</h3>
-              <ul className={styles.playlists}>
-                {data.map((item) => (
-                  <PlayListCard key={item.id.videoId} item={item} />
-                ))}
-              </ul>
-            </div>
-          ) : (
-            <h3>장르를 선택해 주세요!</h3>
-          )}
+          <div className={styles.result}>
+            {genre ? <h3>{genre}</h3> : <h3>장르를 선택해 주세요!</h3>}
+            <ResultList />
+          </div>
         </>
       ) : (
         <h2>
