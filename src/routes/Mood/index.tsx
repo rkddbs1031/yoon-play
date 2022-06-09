@@ -10,7 +10,6 @@ import MainMood from './MainMood'
 import SubMood from './SubMood'
 import Modal from 'routes/_components/Modal/ModalFrame'
 import styles from './mood.module.scss'
-import { spawn } from 'child_process'
 
 const Mood = () => {
   const [subMoodKey, setSubMoodKey] = useState<string>('')
