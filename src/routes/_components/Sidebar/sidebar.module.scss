@@ -14,7 +14,7 @@
   padding: 50px 0;
   overflow-y: scroll;
   background: colors.$BG_COLOR;
-  border-right: 1px solid  rgba(colors.$ASIDE_COLOR, 0.7);
+  border-right: 1px solid  rgba(colors.$ASIDE_COLOR, 0.8);
   transition: 0.3s;
 
   @include responsive.after(MD) {
