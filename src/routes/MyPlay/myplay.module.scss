@@ -2,6 +2,7 @@
 @use '/src/styles/mixins/flexbox';
 @use '/src/styles/mixins/typography';
 @use '/src/styles/mixins/responsive';
+@use '/src/styles/mixins/animation';
 
 .myplayContainer {
   color: colors.$MAIN_TEXT;
@@ -12,6 +13,10 @@
     font-size: 26px;
     font-weight: 600;
     line-height: 50px;
+    opacity: 0;
+    transition: 0.5s;
+    animation: loadText 0.5s cubic-bezier(0.35, 0.22, 0.32, 1.27) forwards;
+    @include animation.loadText;
 
     svg {
       margin-left: 5px;
@@ -19,21 +24,18 @@
       animation: emotionMove 1.2s alternate infinite;
     }
 
-    @keyframes emotionMove {
-      0% {
-        transform: scale(0.95);
-      }
-
-      100% {
-        transform: scale(1.13);
-      }
-    }
+    @include animation.emotionMove;
   }
 
   .playlists {
     display: grid;
     grid-template-columns: 1fr;
     gap: 30px;
+    margin-bottom: 60px;
+    opacity: 0;
+    transition: 0.5s;
+    animation: load 0.5s 0.3s cubic-bezier(0.35, 0.22, 0.32, 1.27) forwards;
+    @include animation.load;
 
     @include responsive.after(SD) {
       grid-template-columns: 1fr 1fr;

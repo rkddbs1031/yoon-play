@@ -2,6 +2,7 @@
 @use '/src/styles/mixins/flexbox';
 @use '/src/styles/mixins/typography';
 @use '/src/styles/mixins/responsive';
+@use '/src/styles/mixins/animation';
 
 .moodPlayContainer {
   position: relative;
@@ -17,15 +18,7 @@
       vertical-align: -3px;
       animation: emotionMove 1.2s alternate infinite;
     }
-    @keyframes emotionMove {
-      0% {
-        transform: scale(0.95);
-      }
-
-      100% {
-        transform: scale(1.13);
-      }
-    }
+    @include animation.emotionMove;
   }
 
   .genreWrap {
@@ -99,15 +92,24 @@
     margin: 30px 0 20px;
     font-size: 20px;
     line-height: 50px;
+
+    &.genreTitle {
+      opacity: 0;
+      transition: 0.5s;
+      animation: loadText 0.5s  cubic-bezier(0.35, 0.22, 0.32, 1.27) forwards;
+      @include animation.loadText;
+    }
   }
 
   .playlists {
     display: grid;
     grid-template-columns: 1fr;
     gap: 30px;
+    margin-bottom: 60px;
     opacity: 0;
-    transition: 0.4s;
-    animation: load 0.4s 0.2s cubic-bezier(0.77, 0.01, 1, 1) forwards;
+    transition: 0.5s;
+    animation: load 0.5s 0.3s cubic-bezier(0.35, 0.22, 0.32, 1.27) forwards;
+    @include animation.load;
 
     @include responsive.after(SD) {
       grid-template-columns: 1fr 1fr;
@@ -118,18 +120,6 @@
     }
     @include responsive.after(LD) {
       grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-  }
-
-  @keyframes load {
-    0% {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateY(0);
     }
   }
 }
