@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { useRecoilValue, useResetRecoilState } from 'recoil'
 
 import { useState, useMount } from 'hooks'
-import { mainMoodItem, subMoodItem } from 'states'
+import { mainMoodItemState, subMoodItemState } from 'states'
 
 import { LoveIcon } from 'assets/svgs'
 import MainMood from './MainMood'
@@ -12,11 +12,11 @@ import Modal from 'routes/_components/Modal/ModalFrame'
 import styles from './mood.module.scss'
 
 const Mood = () => {
+  const getMainMood = useRecoilValue(mainMoodItemState)
+  const getSubMood = useRecoilValue(subMoodItemState)
   const [subMoodKey, setSubMoodKey] = useState<string>('')
-  const getMainMood = useRecoilValue(mainMoodItem)
-  const getSubMood = useRecoilValue(subMoodItem)
   const [isOpen, setIsOpened] = useState<boolean>(false)
-  const resetMainMood = useResetRecoilState(mainMoodItem)
+  const resetMainMood = useResetRecoilState(mainMoodItemState)
 
   const onItemChange = (value: string) => setSubMoodKey(value)
 

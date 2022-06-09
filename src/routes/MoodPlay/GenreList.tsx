@@ -1,16 +1,16 @@
 import { MouseEvent } from 'react'
 import { useRecoilValue, useRecoilState } from 'recoil'
 
-import { mainMoodItem, subMoodItem, genreItem } from 'states'
+import { mainMoodItemState, subMoodItemState, genreItemState } from 'states'
 import { getGenreList } from 'utils/genre'
 
 import { cx } from 'styles'
 import styles from './moodPlay.module.scss'
 
 const GenreList = () => {
-  const mainMood = useRecoilValue(mainMoodItem)
-  const subMood = useRecoilValue(subMoodItem)
-  const [genre, setGenre] = useRecoilState(genreItem)
+  const mainMood = useRecoilValue(mainMoodItemState)
+  const subMood = useRecoilValue(subMoodItemState)
+  const [genre, setGenre] = useRecoilState(genreItemState)
 
   const handelClickGenre = (e: MouseEvent<HTMLButtonElement>) => {
     const { key } = e.currentTarget.dataset

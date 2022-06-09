@@ -1,6 +1,6 @@
 import { useRecoilState, useRecoilValue } from 'recoil'
 
-import { bookmarkModalOpen, musicPlayItem, MyPlayList } from 'states'
+import { musicPlayItemState, myPlayListState, bookmarkModalOpenState } from 'states'
 
 import HaveMusicData from './HaveMusicData'
 import NoneMusicData from './NoneMusicData'
@@ -9,9 +9,9 @@ import styles from './player.module.scss'
 import PlayListControl from '../PlayListControl'
 
 const Player = () => {
-  const musicItem = useRecoilValue(musicPlayItem)
-  const [myPlayList, setMyPlayList] = useRecoilState(MyPlayList)
-  const [modalOpen, setModalOpen] = useRecoilState(bookmarkModalOpen)
+  const musicItem = useRecoilValue(musicPlayItemState)
+  const [myPlayList, setMyPlayList] = useRecoilState(myPlayListState)
+  const [modalOpen, setModalOpen] = useRecoilState(bookmarkModalOpenState)
 
   const handleModalClose = () => setModalOpen(false)
 

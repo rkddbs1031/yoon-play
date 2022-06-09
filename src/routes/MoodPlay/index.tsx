@@ -1,7 +1,7 @@
 import { useRecoilValue, useResetRecoilState } from 'recoil'
 
 import { useUnmount } from 'hooks'
-import { mainMoodItem, subMoodItem, genreItem } from 'states'
+import { mainMoodItemState, subMoodItemState, genreItemState } from 'states'
 
 import { EmotionIcon } from 'assets/svgs'
 import GenreList from './GenreList'
@@ -9,10 +9,10 @@ import ResultList from './ResultList'
 import styles from './moodPlay.module.scss'
 
 const MoodPlay = () => {
-  const genre = useRecoilValue(genreItem)
-  const getMainMood = useRecoilValue(mainMoodItem)
-  const getSubMood = useRecoilValue(subMoodItem)
-  const resetGenre = useResetRecoilState(genreItem)
+  const getMainMood = useRecoilValue(mainMoodItemState)
+  const getSubMood = useRecoilValue(subMoodItemState)
+  const genre = useRecoilValue(genreItemState)
+  const resetGenre = useResetRecoilState(genreItemState)
 
   useUnmount(() => resetGenre())
 

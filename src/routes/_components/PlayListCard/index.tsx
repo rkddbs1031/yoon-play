@@ -1,7 +1,7 @@
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 
 import { IItem } from 'types/playlist'
-import { musicPlayItem, MyPlayList } from 'states'
+import { musicPlayItemState, myPlayListState } from 'states'
 
 import { PlayIcon, FillHeartIcon, OutlineHeartIcon } from 'assets/svgs'
 import styles from './card.module.scss'
@@ -11,8 +11,8 @@ interface IProps {
 }
 
 const Card = ({ item }: IProps) => {
-  const setMmusicItem = useSetRecoilState(musicPlayItem)
-  const myPlayList = useRecoilValue(MyPlayList)
+  const setMmusicItem = useSetRecoilState(musicPlayItemState)
+  const myPlayList = useRecoilValue(myPlayListState)
 
   const handleMusicPlay = () => setMmusicItem(item)
 

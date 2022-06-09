@@ -1,16 +1,16 @@
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 
 import { useEffect } from 'hooks'
-import { muscicPaused, musicPlayItem, bookmarkModalOpen } from 'states'
+import { musicPlayItemState, muscicPausedState, bookmarkModalOpenState } from 'states'
 
 import PlayerControl from './PlayerControl'
 import styles from './player.module.scss'
 import { PlayIcon, PauseIcon, PrevPlayIcon, NextPlayIcon, BookMarkIcon } from 'assets/svgs'
 
 const HaveMusicData = () => {
-  const musicItem = useRecoilValue(musicPlayItem)
-  const [isPaused, setIsPaused] = useRecoilState(muscicPaused)
-  const setModalOpen = useSetRecoilState(bookmarkModalOpen)
+  const musicItem = useRecoilValue(musicPlayItemState)
+  const [isPaused, setIsPaused] = useRecoilState(muscicPausedState)
+  const setModalOpen = useSetRecoilState(bookmarkModalOpenState)
 
   const handleMusicPlay = () => setIsPaused(!isPaused)
 

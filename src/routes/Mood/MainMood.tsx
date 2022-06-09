@@ -1,9 +1,9 @@
 import { MouseEvent } from 'react'
 import { useRecoilState, useResetRecoilState } from 'recoil'
 
-import { useState, useEffect } from 'hooks'
 import { MOOD_LIST } from 'utils/moodList'
-import { mainMoodItem, subMoodItem } from 'states'
+import { useState, useEffect } from 'hooks'
+import { mainMoodItemState, subMoodItemState } from 'states'
 
 import { cx } from 'styles'
 import styles from './mood.module.scss'
@@ -13,9 +13,9 @@ interface IProps {
 }
 
 const MainMood = ({ onItemChange }: IProps) => {
-  const [mainMmood, setMainMood] = useRecoilState(mainMoodItem)
-  const subMood = useResetRecoilState(subMoodItem)
+  const [mainMmood, setMainMood] = useRecoilState(mainMoodItemState)
   const [subMoodKey, setSubMoodKey] = useState<string>()
+  const resetSubMood = useResetRecoilState(subMoodItemState)
 
   const handleMoodClick = (e: MouseEvent<HTMLButtonElement>) => {
     const { key, text } = e.currentTarget.dataset
@@ -28,8 +28,8 @@ const MainMood = ({ onItemChange }: IProps) => {
   }, [onItemChange, subMoodKey])
 
   useEffect(() => {
-    subMood()
-  }, [mainMmood, subMood])
+    resetSubMood()
+  }, [mainMmood, resetSubMood])
 
   return (
     <ul className={styles.mainMood}>

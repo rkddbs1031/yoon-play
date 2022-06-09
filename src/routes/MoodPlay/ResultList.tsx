@@ -2,16 +2,16 @@ import { useQuery } from 'react-query'
 import { useRecoilValue } from 'recoil'
 
 import { getPlaylistApi } from 'services/playlist'
-import { mainMoodItem, subMoodItem, genreItem } from 'states'
+import { mainMoodItemState, subMoodItemState, genreItemState } from 'states'
 
 import Loading from 'routes/_components/Loading'
 import PlayListCard from 'routes/_components/PlayListCard'
 import styles from './moodPlay.module.scss'
 
 const ResultList = () => {
-  const genre = useRecoilValue(genreItem)
-  const getMainMood = useRecoilValue(mainMoodItem)
-  const getSubMood = useRecoilValue(subMoodItem)
+  const getMainMood = useRecoilValue(mainMoodItemState)
+  const getSubMood = useRecoilValue(subMoodItemState)
+  const genre = useRecoilValue(genreItemState)
 
   const { data, isLoading } = useQuery(
     ['getPlaylistApi', genre, getMainMood, getSubMood],

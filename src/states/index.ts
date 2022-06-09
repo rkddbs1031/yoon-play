@@ -5,23 +5,23 @@ import { IItem } from 'types/playlist'
 
 const { persistAtom } = recoilPersist()
 
-export const mainMoodItem = atom<string>({
-  key: '#mainMoodItem',
+export const mainMoodItemState = atom<string>({
+  key: '#mainMoodItemState',
   default: '',
 })
 
-export const subMoodItem = atom<string>({
-  key: '#subMoodItem',
+export const subMoodItemState = atom<string>({
+  key: '#subMoodItemState',
   default: '',
 })
 
-export const genreItem = atom<string>({
-  key: '#genreItem',
+export const genreItemState = atom<string>({
+  key: '#genreItemState',
   default: '',
 })
 
-export const musicPlayItem = atom<IItem>({
-  key: '#musicPlayItem',
+export const musicPlayItemState = atom<IItem>({
+  key: '#musicPlayItemState',
   default: {
     kind: '',
     etag: '',
@@ -58,18 +58,18 @@ export const musicPlayItem = atom<IItem>({
   },
 })
 
-export const muscicPaused = atom<boolean>({
-  key: '#muscicPaused',
+export const muscicPausedState = atom<boolean>({
+  key: '#muscicPausedState',
   default: false,
 })
 
-export const MyPlayList = atom<IItem[]>({
-  key: '#myPlayList',
+export const myPlayListState = atom<IItem[]>({
+  key: '#myPlayListState',
   default: [],
-  effects_UNSTABLE: [persistAtom], // 새로고침해도 유지
+  effects_UNSTABLE: [persistAtom],
 })
 
-export const bookmarkModalOpen = atom<boolean>({
-  key: '#bookmarkModalOpen',
+export const bookmarkModalOpenState = atom<boolean>({
+  key: '#bookmarkModalOpenState',
   default: false,
 })
