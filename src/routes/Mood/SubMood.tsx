@@ -14,7 +14,7 @@ interface IProps {
 }
 
 const SubMood = ({ moodKey }: IProps) => {
-  const [subMoodList, setSubMoodList] = useState<ISubMoodList[]>()
+  const [subMoodList, setSubMoodList] = useState<ISubMoodList[]>([])
   const [submood, setSubMood] = useRecoilState(subMoodItem)
 
   const handleSubMoodClick = (e: MouseEvent<HTMLButtonElement>) => {
@@ -28,7 +28,7 @@ const SubMood = ({ moodKey }: IProps) => {
 
   return (
     <ul className={styles.subMood}>
-      {subMoodList?.map((li) => (
+      {subMoodList.map((li) => (
         <li key={li.id} className={cx({ [styles.isSubActive]: submood === li.text })}>
           <button type='button' data-key={li.text} onClick={handleSubMoodClick}>
             {li.text}

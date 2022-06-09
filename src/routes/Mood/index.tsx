@@ -31,9 +31,7 @@ const Mood = () => {
 
   const handleModalClose = () => setIsOpened(false)
 
-  useMount(() => {
-    resetMainMood()
-  })
+  useMount(() => resetMainMood())
 
   return (
     <section className={styles.moodContainer}>
@@ -44,15 +42,9 @@ const Mood = () => {
       <form onSubmit={handleSubmit} className={styles.cateContainer}>
         <MainMood onItemChange={onItemChange} />
         {subMoodKey && <SubMood moodKey={subMoodKey} />}
-        {getMainMood && getSubMood ? (
-          <NavLink to='moodplay' className={styles.moodSubmit}>
-            MOOD PLAY
-          </NavLink>
-        ) : (
-          <button type='submit' className={styles.moodSubmit}>
-            MOOD PLAY
-          </button>
-        )}
+        <button type='submit' className={styles.moodSubmit}>
+          {getMainMood && getSubMood ? <NavLink to='moodplay'>MOOD PLAY</NavLink> : 'MOOD PLAY'}
+        </button>
       </form>
       <Modal isOpen={isOpen} onClose={handleModalClose} width='400px' height='250px' text='알림창' btnText='확인'>
         <p className={styles.modalText}>두개의 카테고리 모두 선택해주세요!</p>
