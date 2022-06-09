@@ -30,7 +30,7 @@ const List = ({ searchText }: IProps) => {
 
   return data ? (
     <>
-      <h3 className={styles.resultText}>검색결과</h3>
+      <h3 className={styles.resultText}>{searchText} 검색결과</h3>
       <ul className={styles.playlists}>
         {data.map((item) => (
           <PlayListCard key={item.id.videoId} item={item} />
