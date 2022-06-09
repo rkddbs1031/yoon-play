@@ -4,9 +4,9 @@ import { useQuery } from 'react-query'
 import { useState } from 'hooks'
 import { getPlaylistApi } from 'services/playlist'
 
+import PlayListCard from 'routes/_components/PlayListCard'
 import styles from './search.module.scss'
 import { SearchIcon } from 'assets/svgs'
-import PlayListCard from 'routes/_components/PlayListCard'
 
 const Search = () => {
   const [searchText, setSearchText] = useState('')

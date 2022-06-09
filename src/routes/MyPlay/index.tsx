@@ -2,9 +2,9 @@ import { useRecoilValue } from 'recoil'
 
 import { MyPlayList } from 'states'
 
+import { EmotionIcon } from 'assets/svgs'
 import PlayListCard from 'routes/_components/PlayListCard'
 import styles from './myplay.module.scss'
-import { EmotionIcon } from 'assets/svgs'
 
 const MyPlay = () => {
   const myPlayList = useRecoilValue(MyPlayList)

@@ -1,7 +1,7 @@
 import { useRecoilValue, useResetRecoilState } from 'recoil'
 
-import { mainMoodItem, subMoodItem, genreItem } from 'states'
 import { useUnmount } from 'hooks'
+import { mainMoodItem, subMoodItem, genreItem } from 'states'
 
 import { EmotionIcon } from 'assets/svgs'
 import GenreList from './GenreList'
