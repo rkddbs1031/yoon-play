@@ -36,7 +36,7 @@ const HAPPY_LIST = [
   },
   {
     id: 2,
-    text: 'R&B',
+    text: 'k-pop',
   },
   {
     id: 3,
@@ -48,6 +48,10 @@ const HAPPY_LIST = [
   },
   {
     id: 5,
+    text: 'R&B',
+  },
+  {
+    id: 6,
     text: '힙합',
   },
 ]
