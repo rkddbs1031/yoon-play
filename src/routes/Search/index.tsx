@@ -31,6 +31,7 @@ const Search = () => {
         </div>
       </form>
       <div className={styles.result}>
+        {searchText && <h3>{searchText} 검색결과</h3>}
         <List searchText={searchText} />
       </div>
     </section>
