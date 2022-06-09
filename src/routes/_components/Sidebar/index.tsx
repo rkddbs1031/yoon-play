@@ -1,9 +1,10 @@
+import { useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { useClickAway } from 'react-use'
 
 import { cx } from 'styles'
 import { LogoIcon, EmotionIcon, MoodPlayIcon, MyPlayIcon, SearchIcon, HamburgerIcon, CloseIcon } from 'assets/svgs'
 import styles from './sidebar.module.scss'
-import { useState } from 'react'
 
 const navData = [
   {
@@ -34,12 +35,17 @@ const navData = [
 
 const Sidebar = () => {
   const [sidebarDrawer, setSidebarDrawer] = useState(false)
+  const asideRef = useRef(null)
 
   const handleSidebar = () => setSidebarDrawer((prev) => !prev)
 
+  const handleCloseSidebar = () => sidebarDrawer && setSidebarDrawer(false)
+
+  useClickAway(asideRef, handleCloseSidebar)
+
   return (
     <>
-      <aside className={cx(styles.container, { [styles.show]: sidebarDrawer })}>
+      <aside ref={asideRef} className={cx(styles.container, { [styles.show]: sidebarDrawer })}>
         <h2>
           <div className={styles.icon}>
             <LogoIcon />
