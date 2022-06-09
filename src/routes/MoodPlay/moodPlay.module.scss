@@ -133,27 +133,3 @@
     }
   }
 }
-
-.modalText {
-  padding: 0 20px;
-  margin-bottom: 20px;
-  line-height: 20px;
-  color: colors.$BLACK2;
-  text-align: center;
-}
-
-.redirectBtn {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  display: block;
-  padding: 10px 25px;
-  font-size: 13px;
-  text-align: center;
-  background: colors.$SIGNATURE_COLOR_LIGHT;
-  border-radius: 10px;
-
-  a {
-    color: colors.$WHITE;
-  }
-}
