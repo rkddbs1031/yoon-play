@@ -2,12 +2,6 @@ export interface ISubMoodList {
   id: number
   text: string
 }
-export interface IMusicPlayItem {
-  videoId: string
-  channelTitle: string
-  title: string
-  imgUrl: string
-}
 
 export interface IImageSize {
   url: string
