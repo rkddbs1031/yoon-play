@@ -23,11 +23,7 @@ const Mood = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e?.preventDefault()
-    if (!(getMainMood && getSubMood)) {
-      setIsOpened(true)
-    } else {
-      setIsOpened(false)
-    }
+    if (!(getMainMood && getSubMood)) setIsOpened(true)
   }
 
   const handleModalClose = () => setIsOpened(false)
@@ -47,7 +43,7 @@ const Mood = () => {
           {getMainMood && getSubMood ? <NavLink to='moodplay'>MOOD PLAY</NavLink> : <span>MOOD PLAY</span>}
         </button>
       </form>
-      <Modal isOpen={isOpen} onClose={handleModalClose} width='400px' height='250px' text='알림창' btnText='확인'>
+      <Modal isOpen={isOpen} onClose={handleModalClose} width='350px' height='250px' text='알림창' btnText='확인'>
         <p className={styles.modalText}>두개의 카테고리 모두 선택해주세요!</p>
       </Modal>
     </section>

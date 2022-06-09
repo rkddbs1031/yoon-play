@@ -29,19 +29,15 @@
       border-bottom: 1px solid rgba(colors.$SUB_TEXT, 0.2);
     }
 
-    .btnWrap {
-      padding: 0 20px 20px;
-      @include flexbox.flexbox(end, center);
-
-      .closeBtn {
-        display: block;
-        padding: 10px 25px;
-        color: colors.$WHITE;
-        text-align: center;
-        background: colors.$SIGNATURE_COLOR_LIGHT;
-        border: 1px solid colors.$SIGNATURE_COLOR_LIGHT;
-        border-radius: 10px;
-      }
+    .closeBtn {
+      align-self: end;
+      padding: 10px 25px;
+      margin: 0 20px 20px;
+      color: colors.$WHITE;
+      text-align: center;
+      background: colors.$SIGNATURE_COLOR_LIGHT;
+      border: 1px solid colors.$SIGNATURE_COLOR_LIGHT;
+      border-radius: 10px;
     }
   }
 }

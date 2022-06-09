@@ -22,13 +22,11 @@ const ModalFrame = ({ isOpen, onClose, children, width, height, text, btnText }:
         <div className={styles.modalBox} style={{ width: `${width}`, height: `${height}` }}>
           <p className={styles.modalTitle}>{text}</p>
           {children}
-          <div className={styles.btnWrap}>
-            {btnText && (
-              <button type='button' className={styles.closeBtn} onClick={onClose}>
-                {btnText}
-              </button>
-            )}
-          </div>
+          {btnText && (
+            <button type='button' className={styles.closeBtn} onClick={onClose}>
+              {btnText}
+            </button>
+          )}
         </div>
       </div>
     </Modal>
