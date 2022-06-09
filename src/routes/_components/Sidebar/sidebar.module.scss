@@ -11,20 +11,24 @@
   flex-direction: column;
   width: 130px;
   height: 100%;
+  padding: 50px 0;
   overflow-y: scroll;
   background: colors.$BG_COLOR;
   border-right: 1px solid  rgba(colors.$ASIDE_COLOR, 0.7);
   transition: 0.3s;
 
   @include responsive.after(MD) {
-    @include flexbox.flexbox(center, center);
+    @include flexbox.flexbox(start, center);
     left: 0;
+  }
+
+  @include responsive.after(HD) {
+    @include flexbox.flexbox(center, center);
   }
 
   h2 {
     @include flexbox.flexbox(center, center);
     flex-direction: column;
-    margin: 50px 0 100px;
     font-size: 12px;
     font-weight: 600;
     color: colors.$MAIN_TEXT;
@@ -35,12 +39,9 @@
       width: 40px;
       height: 40px;
       margin-bottom: 8px;
+      font-size: 15px;
       background: colors.$BLACKA;
       border-radius: 50%;
-
-      // svg {
-      //   transform: scale(0.7);
-      // }
 
       svg path {
         fill: colors.$SIGNATURE_COLOR_LIGHT;
@@ -48,10 +49,13 @@
     }
 
     @include responsive.after(MD) {
+      position: static;
+    }
+
+    @include responsive.after(HD) {
       position: absolute;
       top: 30px;
       margin: 20px 0 60px;
-      font-size: 15px;
     }
   }
 
@@ -61,9 +65,14 @@
     gap: 30px;
     width: 100px;
     padding-bottom: 50px;
+    margin-top: 60px;
 
     @include responsive.after(MD) {
       gap: 40px;
+      margin-top: 80px;
+    }
+    @include responsive.after(HD) {
+      margin-top: 0;
     }
 
     li {
