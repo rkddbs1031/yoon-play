@@ -1,4 +1,5 @@
 import { useRecoilValue, useResetRecoilState } from 'recoil'
+import { useNavigate } from 'react-router-dom'
 
 import { useUnmount } from 'hooks'
 import { mainMoodItemState, subMoodItemState, genreItemState } from 'states'
@@ -13,6 +14,9 @@ const MoodPlay = () => {
   const getSubMood = useRecoilValue(subMoodItemState)
   const genre = useRecoilValue(genreItemState)
   const resetGenre = useResetRecoilState(genreItemState)
+  const navigate = useNavigate()
+
+  const handleNavigate = () => navigate('/')
 
   useUnmount(() => resetGenre())
 
@@ -30,9 +34,14 @@ const MoodPlay = () => {
           </div>
         </>
       ) : (
-        <h2>
-          먼저 무드 선택을 해주세요! <EmotionIcon />
-        </h2>
+        <div className={styles.moodCheck}>
+          <h2>
+            먼저 무드 선택을 해주세요! <EmotionIcon />
+          </h2>
+          <button type='button' onClick={handleNavigate}>
+            선택하러 가기
+          </button>
+        </div>
       )}
     </section>
   )

@@ -21,6 +21,29 @@
     @include animation.emotionMove;
   }
 
+  .moodCheck {
+    @include flexbox.flexbox(center, center);
+    flex-direction: column;
+    height: calc(100vh - 100px);
+
+    button {
+      width: 160px;
+      padding: 20px 0;
+      font-size: 15px;
+      color: colors.$WHITE;
+      text-align: center;
+      background: colors.$SIGNATURE_COLOR_LIGHT;
+      border-radius: 15px;
+      box-shadow: colors.$SIGNATURE_COLOR_DARK 2px 8px;
+      transition: 0.3s;
+
+      &:hover {
+        box-shadow: colors.$SIGNATURE_COLOR_DARK 2px 5px;
+        transform: translateY(2px);
+      }
+    }
+  }
+
   .genreWrap {
     @include flexbox.flexbox(start, center);
     padding-bottom: 20px;
