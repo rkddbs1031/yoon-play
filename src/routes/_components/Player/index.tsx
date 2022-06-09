@@ -6,6 +6,7 @@ import HaveMusicData from './HaveMusicData'
 import NoneMusicData from './NoneMusicData'
 import Modal from 'routes/_components/Modal/ModalFrame'
 import styles from './player.module.scss'
+import PlayListControl from '../PlayListControl'
 
 const Player = () => {
   const musicItem = useRecoilValue(musicPlayItem)
@@ -14,13 +15,10 @@ const Player = () => {
 
   const handleModalClose = () => setModalOpen(false)
 
-  const handleAddPlayList = () => {
-    setMyPlayList([...myPlayList, Object(musicItem)])
-    setModalOpen(false)
-  }
-
-  const handleRemovePlayList = () => {
-    setMyPlayList(myPlayList.filter((item) => item.id.videoId !== Object(musicItem).id.videoId))
+  const handlePlayList = (val: string) => {
+    val === 'add'
+      ? setMyPlayList([...myPlayList, Object(musicItem)])
+      : setMyPlayList(myPlayList.filter((item) => item.id.videoId !== Object(musicItem).id.videoId))
     setModalOpen(false)
   }
 
@@ -38,19 +36,9 @@ const Player = () => {
         btnText='닫기'
       >
         {myPlayList.filter((el) => el.id.videoId.includes(musicItem.id.videoId)).length > 0 ? (
-          <>
-            <p className={styles.modalText}>플레이리스트에서 삭제 하시겠습니까?</p>
-            <button type='button' className={styles.addBtn} onClick={handleRemovePlayList}>
-              삭제하기
-            </button>
-          </>
+          <PlayListControl modalText='플레이리스트에서 삭제 하시겠습니까?' btnText='삭제' onClick={handlePlayList} />
         ) : (
-          <>
-            <p className={styles.modalText}>플레이리스트에 추가하시겠습니까?</p>
-            <button type='button' className={styles.addBtn} onClick={handleAddPlayList}>
-              추가하기
-            </button>
-          </>
+          <PlayListControl modalText='플레이리스트에 추가하시겠습니까?' btnText='추가' onClick={handlePlayList} />
         )}
       </Modal>
     </>

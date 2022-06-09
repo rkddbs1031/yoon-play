@@ -1,0 +1,24 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/mixins/responsive';
+@use '/src/styles/mixins/typography';
+
+.modalText {
+  padding: 0 20px;
+  line-height: 20px;
+  color: colors.$BLACK2;
+  text-align: center;
+}
+
+.addBtn {
+  position: absolute;
+  right: 105px;
+  bottom: 20px;
+  display: block;
+  padding: 10px 25px;
+  font-size: 13px;
+  color: colors.$SIGNATURE_COLOR_LIGHT;
+  text-align: center;
+  border: 1px solid colors.$SIGNATURE_COLOR_LIGHT;
+  border-radius: 10px;
+}
