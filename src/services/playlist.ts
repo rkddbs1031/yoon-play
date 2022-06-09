@@ -12,7 +12,7 @@ interface IParamsType {
 
 export const getPlaylistApi = (params: IParamsType) => {
   const { genre, mainMood, subMood, keyword } = params
-  const searchText = [genre, mainMood, subMood, keyword, '플레이리스트'].join(' ')
+  const searchText = [genre, mainMood, subMood, keyword, '플레이리스트'].join(' ').trim()
 
   return axios.get<IPlaylistResponse>(BASE_URL, {
     params: {
