@@ -7,8 +7,13 @@
 
 > Youtube API, Figma
 
-### 하단 링크를 통해 api key를 발급 받을 수 있습니다.  :)
-> https://console.cloud.google.com/apis/dashboard
+### 해당순서를 통해 api key를 발급 받을 수 있습니다.  :)
+1) 링크 접속
+https://console.cloud.google.com/apis/dashboard
+2) 새 프로젝트 생성
+3) API 및 서비스 사용설정에서 Youtube Data API v3 검색 후 사용 클릭
+4) 사용자 인증 정보 만들기에서 정보 입력 후 API Key 발급 받기
+
 
 <br/>
 
