@@ -80,9 +80,8 @@
 
   .moodSubmit {
     display: block;
-    width: 130px;
-    padding: 18px 0;
     margin: 40px auto 0;
+    overflow: hidden;
     font-size: 13px;
     font-weight: 600;
     color: colors.$WHITE;
@@ -92,7 +91,11 @@
     box-shadow: colors.$SIGNATURE_COLOR_DARK 2px 7px;
     transition: 0.3s;
 
-    a {
+    a,
+    span {
+      display: inline-block;
+      width: 130px;
+      padding: 18px 0;
       color: colors.$WHITE;
     }
 

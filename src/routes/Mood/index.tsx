@@ -10,6 +10,7 @@ import MainMood from './MainMood'
 import SubMood from './SubMood'
 import Modal from 'routes/_components/Modal/ModalFrame'
 import styles from './mood.module.scss'
+import { spawn } from 'child_process'
 
 const Mood = () => {
   const [subMoodKey, setSubMoodKey] = useState<string>('')
@@ -43,7 +44,7 @@ const Mood = () => {
         <MainMood onItemChange={onItemChange} />
         {subMoodKey && <SubMood moodKey={subMoodKey} />}
         <button type='submit' className={styles.moodSubmit}>
-          {getMainMood && getSubMood ? <NavLink to='moodplay'>MOOD PLAY</NavLink> : 'MOOD PLAY'}
+          {getMainMood && getSubMood ? <NavLink to='moodplay'>MOOD PLAY</NavLink> : <span>MOOD PLAY</span>}
         </button>
       </form>
       <Modal isOpen={isOpen} onClose={handleModalClose} width='400px' height='250px' text='알림창' btnText='확인'>

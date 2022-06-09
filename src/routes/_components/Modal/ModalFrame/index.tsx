@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import Portal from '../index'
+import Modal from '../index'
 import styles from './modal.module.scss'
 
 interface Props {
@@ -17,7 +17,7 @@ const ModalFrame = ({ isOpen, onClose, children, width, height, text, btnText }:
   if (!isOpen) return null
 
   return (
-    <Portal>
+    <Modal>
       <div className={styles.modal}>
         <div className={styles.modalBox} style={{ width: `${width}`, height: `${height}` }}>
           <p className={styles.modalTitle}>{text}</p>
@@ -31,7 +31,7 @@ const ModalFrame = ({ isOpen, onClose, children, width, height, text, btnText }:
           </div>
         </div>
       </div>
-    </Portal>
+    </Modal>
   )
 }
 

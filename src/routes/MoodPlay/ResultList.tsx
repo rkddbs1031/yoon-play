@@ -13,7 +13,7 @@ const ResultList = () => {
   const getMainMood = useRecoilValue(mainMoodItem)
   const getSubMood = useRecoilValue(subMoodItem)
 
-  const { data, isLoading, error } = useQuery(
+  const { data, isLoading } = useQuery(
     ['getPlaylistApi', genre, getMainMood, getSubMood],
     () =>
       getPlaylistApi({ genre, mainMood: getMainMood, subMood: getSubMood }).then((res) => {
@@ -29,8 +29,6 @@ const ResultList = () => {
   )
 
   if (isLoading) return <Loading />
-
-  if (error) return <p>API오류 입니다.</p>
 
   return data ? (
     <ul className={styles.playlists}>
