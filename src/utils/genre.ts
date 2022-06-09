@@ -5,11 +5,11 @@ const CALM_LIST = [
   },
   {
     id: 2,
-    text: '지브리',
+    text: '인디',
   },
   {
     id: 3,
-    text: '재즈',
+    text: '지브리',
   },
   {
     id: 4,
@@ -26,6 +26,10 @@ const CALM_LIST = [
   {
     id: 7,
     text: '팝',
+  },
+  {
+    id: 8,
+    text: '재즈',
   },
 ]
 
