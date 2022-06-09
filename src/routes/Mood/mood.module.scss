@@ -10,7 +10,7 @@
   margin-bottom: 50px;
   color: colors.$MAIN_TEXT;
 
-  @include responsive.after(HD) {
+  @include responsive.after(MD) {
     height: calc(100vh - 100px);
   }
 
@@ -24,7 +24,7 @@
     svg {
       display: inline-block;
       margin-left: 7px;
-      vertical-align: -4px;
+      vertical-align: -2px;
       fill: colors.$LOVE_COLOR;
       animation: emotionMove 1.2s alternate infinite;
     }
