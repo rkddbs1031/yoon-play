@@ -92,14 +92,14 @@
     box-shadow: colors.$SIGNATURE_COLOR_DARK 2px 7px;
     transition: 0.3s;
 
+    a {
+      color: colors.$WHITE;
+    }
+
     &:hover {
       box-shadow: colors.$SIGNATURE_COLOR_DARK 2px 5px;
       transform: translateY(2px);
     }
-  }
-
-  a.moodSubmit {
-    padding: 20px 0 19px;
   }
 
   @include responsive.after(MD) {
@@ -128,10 +128,6 @@
       padding: 23px 20px;
       margin: 50px auto 0;
       font-size: 17px;
-    }
-
-    a.moodSubmit {
-      padding: 25px 20px;
     }
   }
 }
