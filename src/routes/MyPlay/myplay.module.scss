@@ -35,7 +35,6 @@
     opacity: 0;
     transition: 0.5s;
     animation: load 0.5s 0.3s cubic-bezier(0.35, 0.22, 0.32, 1.27) forwards;
-    @include animation.load;
 
     @include responsive.after(SD) {
       grid-template-columns: 1fr 1fr;
@@ -49,4 +48,12 @@
       grid-template-columns: 1fr 1fr 1fr 1fr;
     }
   }
+
+  > p {
+    opacity: 0;
+    transition: 0.5s;
+    animation: load 0.5s 0.3s cubic-bezier(0.35, 0.22, 0.32, 1.27) forwards;
+  }
 }
+
+@include animation.load;
