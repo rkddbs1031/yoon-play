@@ -1,43 +1,22 @@
 import { ChangeEvent, FormEvent } from 'react'
-import { useQuery } from 'react-query'
 
 import { useState } from 'hooks'
-import { getPlaylistApi } from 'services/playlist'
 
-import PlayListCard from 'routes/_components/PlayListCard'
+import List from './List'
 import styles from './search.module.scss'
 import { SearchIcon } from 'assets/svgs'
 
 const Search = () => {
   const [searchText, setSearchText] = useState('')
-  const [isActive, setIsActive] = useState(false)
-
-  const { data, refetch } = useQuery(
-    ['getSearchPlaylistApi', searchText],
-    () =>
-      getPlaylistApi({ keyword: searchText }).then((res) => {
-        return res.data.items
-      }),
-    {
-      enabled: !!(searchText.length > 0 && isActive),
-      refetchOnWindowFocus: false,
-      useErrorBoundary: true,
-      cacheTime: 5 * 10 * 1000,
-      staleTime: 5 * 10 * 1000,
-      onSuccess: () => {
-        setIsActive(false)
-      },
-    }
-  )
+  const [value, setValue] = useState('')
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setIsActive(true)
-    refetch()
+    setSearchText(value)
   }
 
   const handleChangeSearchText = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchText(e.currentTarget.value)
+    setValue(e.currentTarget.value)
   }
 
   return (
@@ -52,18 +31,7 @@ const Search = () => {
         </div>
       </form>
       <div className={styles.result}>
-        {data ? (
-          <>
-            <h3>검색결과</h3>
-            <ul className={styles.playlists}>
-              {data.map((item) => (
-                <PlayListCard key={item.id.videoId} item={item} />
-              ))}
-            </ul>
-          </>
-        ) : (
-          <h3>검색 결과가 없습니다.</h3>
-        )}
+        <List searchText={searchText} />
       </div>
     </section>
   )
