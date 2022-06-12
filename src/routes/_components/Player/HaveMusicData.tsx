@@ -1,7 +1,7 @@
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
-
+import { ChangeEvent } from 'react'
 import { useEffect } from 'hooks'
-import { musicPlayItemState, muscicPausedState, bookmarkModalOpenState } from 'states'
+import { musicPlayItemState, muscicPausedState, bookmarkModalOpenState, volumeState } from 'states'
 
 import PlayerControl from './PlayerControl'
 import styles from './player.module.scss'
@@ -11,10 +11,15 @@ const HaveMusicData = () => {
   const musicItem = useRecoilValue(musicPlayItemState)
   const [isPaused, setIsPaused] = useRecoilState(muscicPausedState)
   const setModalOpen = useSetRecoilState(bookmarkModalOpenState)
+  const [volume, setVolume] = useRecoilState(volumeState)
 
   const handleMusicPlay = () => setIsPaused(!isPaused)
 
   const handleModalOpen = () => setModalOpen(true)
+
+  const handleChageRage = (e: ChangeEvent<HTMLInputElement>) => {
+    setVolume(Number(e.currentTarget.value))
+  }
 
   useEffect(() => {
     setIsPaused(false)
@@ -23,8 +28,21 @@ const HaveMusicData = () => {
   return (
     <div className={styles.player}>
       <PlayerControl />
+
       <div className={styles.cdWrap}>
         <div className={styles.img} style={{ backgroundImage: `url(${musicItem.snippet.thumbnails.high.url})` }} />
+      </div>
+      <div className={styles.range}>
+        <input
+          type='range'
+          value={volume}
+          onChange={handleChageRage}
+          className={styles.volume}
+          min='0'
+          max='100'
+          id='volume'
+        />
+        <label htmlFor='volume'>볼륨</label>
       </div>
       <dl className={styles.musicInfo}>
         <dt>노래 제목</dt>

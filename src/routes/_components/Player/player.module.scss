@@ -176,5 +176,27 @@
         color: colors.$MAIN_TEXT;
       }
     }
+
+    .range {
+      border: 1px solid colors.$WHITE;
+
+      .volume {
+        border: 1px solid red;
+      }
+
+      input[type='range']::-webkit-slider-thumb {
+        width: 20px;
+        height: 20px;
+        background: red;
+        border: 0;
+        border-radius: 15px;
+        outline: 0;
+        -webkit-appearance: none;
+      }
+
+      label {
+        display: none;
+      }
+    }
   }
 }

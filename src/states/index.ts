@@ -73,3 +73,8 @@ export const bookmarkModalOpenState = atom<boolean>({
   key: '#bookmarkModalOpenState',
   default: false,
 })
+
+export const volumeState = atom<number>({
+  key: '#volumeState',
+  default: 0.5,
+})
