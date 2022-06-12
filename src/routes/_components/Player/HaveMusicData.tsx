@@ -32,6 +32,12 @@ const HaveMusicData = () => {
       <div className={styles.cdWrap}>
         <div className={styles.img} style={{ backgroundImage: `url(${musicItem.snippet.thumbnails.high.url})` }} />
       </div>
+      <dl className={styles.musicInfo}>
+        <dt>노래 제목</dt>
+        <dd className={styles.title}>{musicItem.snippet.title}</dd>
+        <dt>가수</dt>
+        <dd className={styles.channelTitle}>{musicItem.snippet.channelTitle}</dd>
+      </dl>
       <div className={styles.range}>
         <input
           type='range'
@@ -44,12 +50,6 @@ const HaveMusicData = () => {
         />
         <label htmlFor='volume'>볼륨</label>
       </div>
-      <dl className={styles.musicInfo}>
-        <dt>노래 제목</dt>
-        <dd className={styles.title}>{musicItem.snippet.title}</dd>
-        <dt>가수</dt>
-        <dd className={styles.channelTitle}>{musicItem.snippet.channelTitle}</dd>
-      </dl>
       <div className={styles.btns}>
         <div className={styles.commonBtn}>
           <button type='button'>
